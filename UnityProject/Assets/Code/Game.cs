@@ -6,7 +6,7 @@ public class Game : MonoBehaviour {
 	PlayState playState = new PlayState();
 	PauseState pauseState = new PauseState();
 
-	bool paused = false;
+	bool paused = true;
 
 	// Use this for initialization
 	void Start () {
