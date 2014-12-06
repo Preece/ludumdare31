@@ -8,6 +8,10 @@ public class ResourceNode : MonoBehaviour {
 	protected int fuel;
 	protected int parts;
 
+	public int health = 100;
+	public int rawToFuel = 1;
+	public int rawToParts = 1;
+
 	//a multiplier for a default rate (200ms). 1.0 = 1x
 	protected double processingRate = 1.0;
 	private double processingTimer = 0.0;

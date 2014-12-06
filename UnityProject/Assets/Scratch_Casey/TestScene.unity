@@ -356,6 +356,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1083855713}
+  - 114: {fileID: 1083855714}
   m_Layer: 0
   m_Name: CommandCenter
   m_TagString: Untagged
@@ -377,6 +378,21 @@ Transform:
   - {fileID: 858883458}
   m_Father: {fileID: 1883920917}
   m_RootOrder: 0
+--- !u!114 &1083855714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 030a44c198833ae41875ad4405be0b33,
+    type: 2}
+  m_PrefabInternal: {fileID: 1819474707}
+  m_GameObject: {fileID: 1083855712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0af4428c019f35843ab6513b48abdeef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  rawToFuel: 1
+  rawToParts: 1
 --- !u!1 &1281441243
 GameObject:
   m_ObjectHideFlags: 0
@@ -706,6 +722,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1883920917}
+  - 114: {fileID: 1883920918}
   m_Layer: 0
   m_Name: Structures
   m_TagString: Untagged
@@ -726,6 +743,23 @@ Transform:
   - {fileID: 1083855713}
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!114 &1883920918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1883920916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f01aed7f5d2d1542ab3cb37a2f64245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  commandCenter: {fileID: 11400000, guid: 030a44c198833ae41875ad4405be0b33, type: 2}
+  extractor: {fileID: 11400000, guid: 545dde62fea11124b89f25713e822da6, type: 2}
+  refinery: {fileID: 11400000, guid: fc4fcce14983cac478ea143042c523ca, type: 2}
+  fabricator: {fileID: 11400000, guid: 8180f690b9e64b24eb1fd40b2355e858, type: 2}
+  pipe: {fileID: 11400000, guid: 966faa0e20dfbdb4fa25c23930fe8d5c, type: 2}
+  rawMaterials: {fileID: 0}
 --- !u!1 &2058584566
 GameObject:
   m_ObjectHideFlags: 0

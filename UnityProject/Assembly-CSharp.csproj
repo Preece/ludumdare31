@@ -49,6 +49,7 @@
      <Compile Include="Assets\Code\Game.cs" />
      <Compile Include="Assets\Code\PauseState.cs" />
      <Compile Include="Assets\Code\PlayState.cs" />
+     <Compile Include="Assets\Code\StructureController.cs" />
      <Compile Include="Assets\Code\Structures\CommandCenter.cs" />
      <Compile Include="Assets\Code\Structures\Extractor.cs" />
      <Compile Include="Assets\Code\Structures\Fabricator.cs" />
