@@ -4,12 +4,14 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour {
 
-	private float startTime = 0;
+	private float runningTime = 0;
 	public Text timerText;
+
+	Game game;
 
 	// Use this for initialization
 	void Start () {
-		startTime = Time.time;
+		game = GameObject.Find("GameController").GetComponent<Game>();
 	}
 	
 	// Update is called once per frame
@@ -18,14 +20,15 @@ public class Timer : MonoBehaviour {
 	}
 
 	void OnGUI () {
-	    float guiTime = Time.time - startTime; 
+		if(!game.Paused()) {
+	    	runningTime += Time.deltaTime; 
+		}
 
-		float minutes = guiTime / 60; 
-		float seconds = guiTime % 60;
-		float fraction = (guiTime * 100) % 100;
+		float minutes = runningTime / 60; 
+		float seconds = runningTime % 60;
+		float fraction = (runningTime * 100) % 100;
 
 		timerText.text = string.Format ("{0:00}:{1:00}:{2:00}", minutes, seconds, fraction);
 
-		//gameObject.guiText.text = "asss";
 	}
 }
