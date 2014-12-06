@@ -49,6 +49,13 @@
      <Compile Include="Assets\Code\Game.cs" />
      <Compile Include="Assets\Code\PauseState.cs" />
      <Compile Include="Assets\Code\PlayState.cs" />
+     <Compile Include="Assets\Code\Structures\CommandCenter.cs" />
+     <Compile Include="Assets\Code\Structures\Extractor.cs" />
+     <Compile Include="Assets\Code\Structures\Fabricator.cs" />
+     <Compile Include="Assets\Code\Structures\Pipe.cs" />
+     <Compile Include="Assets\Code\Structures\RawMaterials.cs" />
+     <Compile Include="Assets\Code\Structures\Refinery.cs" />
+     <Compile Include="Assets\Code\Structures\ResourceNode.cs" />
      <Compile Include="Assets\Code\UI\Timer.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
