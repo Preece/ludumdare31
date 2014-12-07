@@ -52,24 +52,28 @@ public class PauseState {
 		if(Input.GetKeyDown(KeyCode.Alpha1)) {
 			DestroyPlacementStructure();
 			placementStructure = GameObject.Instantiate(prefabs["pipe"], Vector3.zero, Quaternion.identity) as ResourceNode;
+			placementStructure.gameObject.layer = 0;
 			mouseFunc = MouseFunc.prePiping;
 		}
 
 		if(Input.GetKeyDown(KeyCode.Alpha2)) {
 			DestroyPlacementStructure();
 			placementStructure = GameObject.Instantiate(prefabs["extractor"], Vector3.zero, Quaternion.identity) as ResourceNode;
+			placementStructure.gameObject.layer = 0;
 			mouseFunc = MouseFunc.placingExtractor;
 		}
 
 		if(Input.GetKeyDown(KeyCode.Alpha3)) {
 			DestroyPlacementStructure();
 			placementStructure = GameObject.Instantiate(prefabs["fabricator"], Vector3.zero, Quaternion.identity) as ResourceNode;
+			placementStructure.gameObject.layer = 0;
 			mouseFunc = MouseFunc.placing;
 		}
 
 		if(Input.GetKeyDown(KeyCode.Alpha4)) {
 			DestroyPlacementStructure();
 			placementStructure = GameObject.Instantiate(prefabs["refinery"], Vector3.zero, Quaternion.identity) as ResourceNode;
+			placementStructure.gameObject.layer = 0;
 			mouseFunc = MouseFunc.placing;
 		}
 
@@ -129,6 +133,7 @@ public class PauseState {
 			if(placementStructure != null && collides.Length == 0) {
 				ResourceNode nodezz = GameObject.Instantiate (placementStructure, pos, Quaternion.identity) as ResourceNode;
 				DestroyPlacementStructure();
+				nodezz.gameObject.layer = 8;
 			}
 		}
 		//if they are trying to place an extractor
@@ -139,6 +144,7 @@ public class PauseState {
 			if(placementStructure != null && collides.Length == 0 && rezzys.Length != 0) {
 				ResourceNode newExtractor = GameObject.Instantiate (placementStructure, pos, Quaternion.identity) as ResourceNode;
 				DestroyPlacementStructure();
+				newExtractor.gameObject.layer = 8;
 
 				//set the extractor to be fed by the resource
 				rezzys[0].gameObject.GetComponent<RawMaterials>().AddFeedee(newExtractor.GetComponent<Extractor>());

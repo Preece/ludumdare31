@@ -572,7 +572,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 858883458}
   - 33: {fileID: 858883461}
-  - 135: {fileID: 858883460}
   - 23: {fileID: 858883459}
   m_Layer: 8
   m_Name: Sphere
@@ -614,19 +613,6 @@ Renderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!135 &858883460
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 13500000, guid: 030a44c198833ae41875ad4405be0b33,
-    type: 2}
-  m_PrefabInternal: {fileID: 1819474707}
-  m_GameObject: {fileID: 858883457}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: .5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &858883461
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -898,7 +884,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1281441247}
   - 33: {fileID: 1281441246}
-  - 65: {fileID: 1281441245}
   - 23: {fileID: 1281441244}
   m_Layer: 8
   m_Name: Cube
@@ -928,19 +913,6 @@ Renderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!65 &1281441245
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6500000, guid: 030a44c198833ae41875ad4405be0b33,
-    type: 2}
-  m_PrefabInternal: {fileID: 1819474707}
-  m_GameObject: {fileID: 1281441243}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &1281441246
 MeshFilter:
   m_ObjectHideFlags: 0
