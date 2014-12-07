@@ -4,8 +4,9 @@ using System.Collections;
 public class KillYourself : MonoBehaviour {
 
 	// Use this for initialization
+	public float deathTimer = 2; 
 	void Start () {
-		Invoke ("Suicide", 2f); 
+		Invoke ("Suicide", deathTimer); 
 	}
 	void Suicide(){
 		Destroy (gameObject); 

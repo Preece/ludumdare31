@@ -5,9 +5,9 @@ public class Enemy : Unit {
 
 	public int damage = 10; 
 	Worker _presentThreat;
-
-	bool _startingAttack = true; 
+	bool _startingAttack = false; 
 	float _animTimer = 0; 
+	public Object bloodSplatter; 
 
 	public void GotShot(Worker _shooter, int _damageTaken){
 
@@ -19,16 +19,27 @@ public class Enemy : Unit {
 		if (_presentThreat == null) {
 			_presentThreat = _shooter; 	
 		}
+		GameObject _splatter =  Instantiate (bloodSplatter) as GameObject; 
+		_splatter.transform.position = transform.position;
+		_splatter.transform.forward = transform.position - _shooter.transform.position; 
+		_splatter.transform.parent = transform; 
 	}
 	void Attack(){
-		if (_agent.remainingDistance <= _agent.stoppingDistance && _presentThreat != null) {
+		if (_agent.remainingDistance <= _agent.stoppingDistance && _presentThreat != null) { //gets the attack animation to play
 			_anim.SetBool("Attacking",true); 
 		}
 		else{
 			_anim.SetBool("Attacking",false); 
+		} //this bit is about holding them in place
+		if(_anim.GetCurrentAnimatorStateInfo(0).IsTag("Attack")){
+			_agent.speed = 0; 
+			_agent.velocity = Vector3.zero; 
 		}
-
-		if(_anim.GetCurrentAnimatorStateInfo(0).IsName("Attack") && _startingAttack == true && _presentThreat != null){
+		else{
+			_agent.speed = 10; 
+		}
+		if(_anim.GetCurrentAnimatorStateInfo(0).IsName("Attack") && _startingAttack == true && _presentThreat != null
+		   		&& !_anim.IsInTransition(0)){
 			_presentThreat.GotHit (this,damage); 
 			_startingAttack = false;
 		}
@@ -45,6 +56,7 @@ public class Enemy : Unit {
 	}
 	protected override void Died (){
 		_manager.Died (this);
+		Destroy (_moveTarget.gameObject); 
 		Destroy (gameObject); 
 	}
 	protected override void AddToList (){
@@ -53,7 +65,6 @@ public class Enemy : Unit {
 
 	void RelentlessHunt(){
 		if(_presentThreat == null){
-			Debug.Log("LOoking for another worker to savage"); 
 			Collider[] _workers = Physics.OverlapSphere (transform.position, 80f);
 			foreach (Collider _possibleTarget in _workers) {
 				if(_possibleTarget.GetComponent<Worker>() != null){
@@ -67,5 +78,8 @@ public class Enemy : Unit {
 		RelentlessHunt (); 
 		Pursuit ();
 		Attack ();
+	}
+	void Start(){
+		_anim.Play ("Start",0, Random.Range (0, .8f)); 
 	}
 }

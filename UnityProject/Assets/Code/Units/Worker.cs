@@ -15,13 +15,16 @@ public class Worker : Unit {
 	public WorkerDetector detector; 
 	public List<Transform> gunPoints = new List<Transform> (); 
 	public Object muzzleFX; 
+	public Object explosionFX;
 
 	bool _spawnFireFX = true; 
 	float _animTime; 
 
 
 	protected override void Died (){
+		Instantiate (explosionFX, transform.position, new Quaternion()); 
 		_manager.Died (this);
+		Destroy (_moveTarget.gameObject); 
 		Destroy (this.gameObject); 
 	}
 	protected override void AddToList (){
