@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic; 
 
 public class Worker : Unit {
 
-
+	public int weaponDamage = 30;
 	public float repairDistance = 5;
 
 	bool _repairingStructure = false; 
@@ -11,10 +12,17 @@ public class Worker : Unit {
 	public Enemy _targetEnemy; 
 	ResourceNode _targetStructure; 
 	public LayerMask buildingMask; 
+	public WorkerDetector detector; 
+	public List<Transform> gunPoints = new List<Transform> (); 
+	public Object muzzleFX; 
+
+	bool _spawnFireFX = true; 
+	float _animTime; 
 
 
 	protected override void Died (){
 		_manager.Died (this);
+		Destroy (this.gameObject); 
 	}
 	protected override void AddToList (){
 		_manager.AddToLists (this); 
@@ -24,6 +32,7 @@ public class Worker : Unit {
 		base.GoHere (_destination);
 		_repairingStructure = false; 
 		_targetStructure = null; 
+		_anim.SetBool("Building", false); 
 		detector.NoLongerLooking (); 
 	}
 
@@ -34,16 +43,25 @@ public class Worker : Unit {
 			_attacking = true;
 			_repairingStructure = false;
 			_targetStructure = null; 
+			_anim.SetBool("Building", false); 
+			_anim.SetBool("Attacking",true); 
 			detector.NoLongerLooking(); 
 		}
 	}
-	void CryHavoc(){
+	void FaceTheEnemy(){
+		transform.forward = Vector3.Lerp (transform.forward, _targetEnemy.transform.position - transform.position,Time.deltaTime);
+	}
+	void CryHavoc(){ //The attacking bit of code
 		if (_targetEnemy != null) {
-			Debug.Log("Let loose the dogs of war"); 		
+			FaceTheEnemy(); 
 		}
 		if (_attacking && _targetEnemy == null) { //lost the target
 			Debug.Log("Target eliminated"); 
-			_attacking = false; 		
+			if(LookForAnotherEnemy() == false){
+				_attacking = false; 	
+				_anim.SetBool("Attacking",false); 
+			}
+
 		}
 		if (_attacking && _targetEnemy != null) {
 			if(Vector3.Distance(transform.position, _targetEnemy.transform.position) > detector.GetComponent<SphereCollider>().radius +2 ){
@@ -51,8 +69,20 @@ public class Worker : Unit {
 				Debug.Log(Vector3.Distance(transform.position, _targetEnemy.transform.position)); 
 				_attacking = false;
 				_targetEnemy = null; 
+				_anim.SetBool("Attacking",false); 
 			}
 		}
+	}
+	bool LookForAnotherEnemy(){
+		Collider[] _potentialEnemies = Physics.OverlapSphere (transform.position, detector.GetComponent<SphereCollider> ().radius);
+		foreach (Collider _enemy in _potentialEnemies) {
+			if( _enemy.gameObject.GetComponent<Enemy>() != null){
+				_attacking = true; 
+				_targetEnemy = _enemy.gameObject.GetComponent<Enemy>();
+				return true; 
+			}
+		}
+		return false; 
 	}
 	/*
 	void CheckToRepair(){
@@ -76,7 +106,7 @@ public class Worker : Unit {
 		}
 	}
 	*/
-	public WorkerDetector detector; 
+
 	void CheckToRepair(){
 		if(!_attacking && !_repairingStructure && _targetStructure == null)
 		{
@@ -84,7 +114,6 @@ public class Worker : Unit {
 			{
 				if (!_agent.hasPath || _agent.velocity.sqrMagnitude == 0f)
 				{
-					Debug.Log("look for stuff"); 
 					detector.LookForToRepair(); 
 				}
 			}
@@ -109,6 +138,7 @@ public class Worker : Unit {
 				if (!_agent.hasPath || _agent.velocity.sqrMagnitude == 0f)
 				{
 					Debug.Log("Repairing"); 
+					_anim.SetBool("Building", true); 
 					_repairingStructure = true; 
 				}
 			}
@@ -117,6 +147,37 @@ public class Worker : Unit {
 
 	void RepairStructure(){ //the actual process of repairing
 		
+	}
+
+
+	public void FireWeaponFX(){
+
+		if(_anim.GetCurrentAnimatorStateInfo (0).IsName("Attack") && _spawnFireFX && _attacking && _targetEnemy != null){ //just started playing
+			for(int i = 0; i < gunPoints.Count;i++){
+				GameObject _theFX = Instantiate(muzzleFX) as GameObject;
+				_theFX.transform.parent = gunPoints[i].transform; 
+				_theFX.transform.position = gunPoints[i].transform.position;
+				_theFX.transform.rotation = gunPoints[i].transform.rotation;
+			}
+			_spawnFireFX = false;
+			DoDamage (); 
+
+		}
+		//the start of a loop
+		if (_animTime >  _anim.GetCurrentAnimatorStateInfo (0).normalizedTime - Mathf.Floor (_anim.GetCurrentAnimatorStateInfo (0).normalizedTime) && !_spawnFireFX) {
+			_spawnFireFX = true; 	
+		}
+		_animTime = _anim.GetCurrentAnimatorStateInfo (0).normalizedTime - Mathf.Floor (_anim.GetCurrentAnimatorStateInfo (0).normalizedTime);
+	}
+	void DoDamage(){
+		_targetEnemy.GotShot (this, weaponDamage); 
+	}
+	public void GotHit(Enemy _attacker, int _damage){
+		_health -= _damage;
+		Debug.Log ("A worker got hit and has " + _health + " left"); 
+		if (_health < 0) {
+			Died(); 		
+		}
 	}
 
 	public Transform testTarget;
@@ -135,7 +196,9 @@ public class Worker : Unit {
 			StartRepairing();
 			RepairStructure(); 
 		CryHavoc (); 
+		AnimControl (); 
 		FollowTest (); 
+		FireWeaponFX (); 
 	}
 
 

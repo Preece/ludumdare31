@@ -1,0 +1,349 @@
+fileFormatVersion: 2
+guid: 858df34e9ed6e8740ace435deceb76f3
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: BN_Head
+    100002: BN_Jaw
+    100004: BN_Left_Ankle
+    100006: BN_Left_Arm
+    100008: BN_Left_Foot
+    100010: BN_Left_Forarm
+    100012: BN_Left_Leg_Nub
+    100014: BN_Left_Palm
+    100016: BN_Left_Shin
+    100018: BN_Left_Thigh
+    100020: BN_Left_Wrist
+    100022: BN_Neck
+    100024: BN_Righ_Arm
+    100026: BN_Right_Ankle
+    100028: BN_Right_Foot
+    100030: BN_Right_Forarm
+    100032: BN_Right_Leg_Nub
+    100034: BN_Right_Palm
+    100036: BN_Right_Shin
+    100038: BN_Right_Thigh
+    100040: BN_Right_Wrist
+    100042: BN_Spine_1
+    100044: BN_Spine_2
+    100046: BN_Spine_3
+    100048: BN_Spine_3 1
+    100050: BN_Spine_4
+    100052: BN_Tail_1
+    100054: BN_Tail_2
+    100056: BN_Tail_3
+    100058: BN_Tail_4
+    100060: BN_Tail_5
+    100062: BN_Tail_6
+    100064: BN_Tail_7
+    100066: BN_Tail_8
+    100068: Circle001
+    100070: Circle002
+    100072: Con_Head
+    100074: Con_Head001
+    100076: Con_Left_Finger
+    100078: Con_Left_Foot
+    100080: Con_Left_leg
+    100082: Con_Neck
+    100084: Con_Right_Foot
+    100086: Con_Right_Foot 1
+    100088: Con_Right_Leg
+    100090: Dummy001
+    100092: Dummy002
+    100094: Dummy003
+    100096: //RootNode
+    100098: Hlpr_Spine_1
+    100100: Hlpr_Spine_2
+    100102: Hlpr_Spine_3
+    100104: Hlpr_Tail_1
+    100106: Hlpr_Tail_2
+    100108: Hlpr_Tail_3
+    100110: Hlpr_Tail_4
+    100112: IK Chain002
+    100114: IK Chain003
+    100116: IK Chain004
+    100118: IK_Front_Right
+    100120: IK_FrontLeft
+    100122: IK_Left_Leg
+    100124: IK_Right_Foot
+    100126: IKChain_Spine
+    100128: Skitter
+    400000: BN_Head
+    400002: BN_Jaw
+    400004: BN_Left_Ankle
+    400006: BN_Left_Arm
+    400008: BN_Left_Foot
+    400010: BN_Left_Forarm
+    400012: BN_Left_Leg_Nub
+    400014: BN_Left_Palm
+    400016: BN_Left_Shin
+    400018: BN_Left_Thigh
+    400020: BN_Left_Wrist
+    400022: BN_Neck
+    400024: BN_Righ_Arm
+    400026: BN_Right_Ankle
+    400028: BN_Right_Foot
+    400030: BN_Right_Forarm
+    400032: BN_Right_Leg_Nub
+    400034: BN_Right_Palm
+    400036: BN_Right_Shin
+    400038: BN_Right_Thigh
+    400040: BN_Right_Wrist
+    400042: BN_Spine_1
+    400044: BN_Spine_2
+    400046: BN_Spine_3
+    400048: BN_Spine_3 1
+    400050: BN_Spine_4
+    400052: BN_Tail_1
+    400054: BN_Tail_2
+    400056: BN_Tail_3
+    400058: BN_Tail_4
+    400060: BN_Tail_5
+    400062: BN_Tail_6
+    400064: BN_Tail_7
+    400066: BN_Tail_8
+    400068: Circle001
+    400070: Circle002
+    400072: Con_Head
+    400074: Con_Head001
+    400076: Con_Left_Finger
+    400078: Con_Left_Foot
+    400080: Con_Left_leg
+    400082: Con_Neck
+    400084: Con_Right_Foot
+    400086: Con_Right_Foot 1
+    400088: Con_Right_Leg
+    400090: Dummy001
+    400092: Dummy002
+    400094: Dummy003
+    400096: //RootNode
+    400098: Hlpr_Spine_1
+    400100: Hlpr_Spine_2
+    400102: Hlpr_Spine_3
+    400104: Hlpr_Tail_1
+    400106: Hlpr_Tail_2
+    400108: Hlpr_Tail_3
+    400110: Hlpr_Tail_4
+    400112: IK Chain002
+    400114: IK Chain003
+    400116: IK Chain004
+    400118: IK_Front_Right
+    400120: IK_FrontLeft
+    400122: IK_Left_Leg
+    400124: IK_Right_Foot
+    400126: IKChain_Spine
+    400128: Skitter
+    4300000: Skitter
+    7400000: Run
+    9500000: //RootNode
+    13700000: Skitter
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Run
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 18
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: BN_Spine_1
+        weight: 1
+      - path: BN_Spine_1/BN_Left_Thigh
+        weight: 1
+      - path: BN_Spine_1/BN_Left_Thigh/BN_Left_Shin
+        weight: 1
+      - path: BN_Spine_1/BN_Left_Thigh/BN_Left_Shin/BN_Left_Ankle
+        weight: 1
+      - path: BN_Spine_1/BN_Left_Thigh/BN_Left_Shin/BN_Left_Ankle/BN_Left_Leg_Nub
+        weight: 1
+      - path: BN_Spine_1/BN_Left_Thigh/BN_Left_Shin/BN_Left_Ankle/BN_Left_Leg_Nub/BN_Left_Foot
+        weight: 1
+      - path: BN_Spine_1/BN_Right_Thigh
+        weight: 1
+      - path: BN_Spine_1/BN_Right_Thigh/BN_Right_Shin
+        weight: 1
+      - path: BN_Spine_1/BN_Right_Thigh/BN_Right_Shin/BN_Right_Ankle
+        weight: 1
+      - path: BN_Spine_1/BN_Right_Thigh/BN_Right_Shin/BN_Right_Ankle/BN_Right_Leg_Nub
+        weight: 1
+      - path: BN_Spine_1/BN_Right_Thigh/BN_Right_Shin/BN_Right_Ankle/BN_Right_Leg_Nub/BN_Right_Foot
+        weight: 1
+      - path: BN_Spine_1/BN_Spine_2
+        weight: 1
+      - path: BN_Spine_1/BN_Spine_2/BN_Spine_3
+        weight: 1
+      - path: BN_Spine_1/BN_Spine_2/BN_Spine_3/BN_Spine_3 1
+        weight: 1
+      - path: BN_Spine_1/BN_Spine_2/BN_Spine_3/BN_Spine_3 1/BN_Spine_4
+        weight: 1
+      - path: BN_Spine_1/BN_Spine_2/BN_Spine_3/BN_Spine_3 1/BN_Spine_4/BN_Left_Arm
+        weight: 1
+      - path: BN_Spine_1/BN_Spine_2/BN_Spine_3/BN_Spine_3 1/BN_Spine_4/BN_Left_Arm/BN_Left_Forarm
+        weight: 1
+      - path: BN_Spine_1/BN_Spine_2/BN_Spine_3/BN_Spine_3 1/BN_Spine_4/BN_Left_Arm/BN_Left_Forarm/BN_Left_Wrist
+        weight: 1
+      - path: BN_Spine_1/BN_Spine_2/BN_Spine_3/BN_Spine_3 1/BN_Spine_4/BN_Righ_Arm
+        weight: 1
+      - path: BN_Spine_1/BN_Spine_2/BN_Spine_3/BN_Spine_3 1/BN_Spine_4/BN_Righ_Arm/BN_Right_Forarm
+        weight: 1
+      - path: BN_Spine_1/BN_Spine_2/BN_Spine_3/BN_Spine_3 1/BN_Spine_4/BN_Righ_Arm/BN_Right_Forarm/BN_Right_Wrist
+        weight: 1
+      - path: BN_Tail_1
+        weight: 1
+      - path: BN_Tail_1/BN_Tail_2
+        weight: 1
+      - path: BN_Tail_1/BN_Tail_2/BN_Tail_3
+        weight: 1
+      - path: BN_Tail_1/BN_Tail_2/BN_Tail_3/BN_Tail_4
+        weight: 1
+      - path: BN_Tail_1/BN_Tail_2/BN_Tail_3/BN_Tail_4/BN_Tail_5
+        weight: 1
+      - path: BN_Tail_1/BN_Tail_2/BN_Tail_3/BN_Tail_4/BN_Tail_5/BN_Tail_6
+        weight: 1
+      - path: BN_Tail_1/BN_Tail_2/BN_Tail_3/BN_Tail_4/BN_Tail_5/BN_Tail_6/BN_Tail_7
+        weight: 1
+      - path: BN_Tail_1/BN_Tail_2/BN_Tail_3/BN_Tail_4/BN_Tail_5/BN_Tail_6/BN_Tail_7/BN_Tail_8
+        weight: 1
+      - path: Circle002
+        weight: 1
+      - path: Circle002/Con_Left_Foot
+        weight: 1
+      - path: Circle002/Con_Left_Foot/IK Chain004
+        weight: 1
+      - path: Circle002/Con_Left_leg
+        weight: 1
+      - path: Circle002/Con_Left_leg/IK Chain003
+        weight: 1
+      - path: Circle002/Con_Right_Foot
+        weight: 1
+      - path: Circle002/Con_Right_Foot/IK_Right_Foot
+        weight: 1
+      - path: Circle002/Con_Right_Foot 1
+        weight: 1
+      - path: Circle002/Con_Right_Foot 1/IK_Front_Right
+        weight: 1
+      - path: Circle002/Con_Right_Leg
+        weight: 1
+      - path: Circle002/Con_Right_Leg/IK_Left_Leg
+        weight: 1
+      - path: Dummy001
+        weight: 1
+      - path: Dummy001/Con_Left_Finger
+        weight: 1
+      - path: Dummy001/Con_Left_Finger/BN_Left_Palm
+        weight: 1
+      - path: Dummy002
+        weight: 1
+      - path: Dummy002/Con_Neck
+        weight: 1
+      - path: Dummy002/Con_Neck/BN_Neck
+        weight: 1
+      - path: Dummy002/Con_Neck/Con_Head
+        weight: 1
+      - path: Dummy002/Con_Neck/Con_Head/BN_Head
+        weight: 1
+      - path: Dummy002/Con_Neck/Con_Head/Con_Head001
+        weight: 1
+      - path: Dummy002/Con_Neck/Con_Head/Con_Head001/BN_Jaw
+        weight: 1
+      - path: Dummy003
+        weight: 1
+      - path: Dummy003/Circle001
+        weight: 1
+      - path: Dummy003/Circle001/BN_Right_Palm
+        weight: 1
+      - path: Hlpr_Spine_1
+        weight: 1
+      - path: Hlpr_Spine_1/Hlpr_Spine_2
+        weight: 1
+      - path: Hlpr_Spine_1/Hlpr_Spine_3
+        weight: 1
+      - path: Hlpr_Spine_1/Hlpr_Tail_1
+        weight: 1
+      - path: Hlpr_Spine_1/Hlpr_Tail_1/Hlpr_Tail_2
+        weight: 1
+      - path: Hlpr_Spine_1/Hlpr_Tail_1/Hlpr_Tail_3
+        weight: 1
+      - path: Hlpr_Spine_1/Hlpr_Tail_1/Hlpr_Tail_4
+        weight: 1
+      - path: IK Chain002
+        weight: 1
+      - path: IK_FrontLeft
+        weight: 1
+      - path: IKChain_Spine
+        weight: 1
+      - path: Skitter
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 

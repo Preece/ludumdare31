@@ -6,15 +6,19 @@ public class Unit : MonoBehaviour {
 	protected NavMeshAgent _agent;
 	protected Transform _moveTarget; 
 	protected UnitManager _manager;
+	protected Animator _anim; 
 	protected bool _play; 
 
 	[SerializeField]
-	protected float _health;
+	protected float _health = 100;
 	public float Health { get { return _health; } set { _health = value; } }
 
 	public void Pause(){
 		_agent.Stop ();
 		_play = false; 
+	}
+	protected void AnimControl(){
+		_anim.SetFloat ("Speed", _agent.velocity.magnitude); 
 	}
 	public void Play(){
 		_agent.Resume ();
@@ -31,11 +35,12 @@ public class Unit : MonoBehaviour {
 		_manager.Died (this); 
 		Destroy (gameObject); 
 	}
-	void Start(){
+	void Awake(){
 		_agent = GetComponent<NavMeshAgent> (); 
 		_moveTarget = new GameObject ().GetComponent<Transform> (); 
 		_moveTarget.name = this.name + "-Target"; 
 		_manager = GameObject.Find ("GameController").GetComponent<UnitManager> (); 
+		_anim = GetComponentInChildren<Animator> (); 
 
 		AddToList (); 
 	}

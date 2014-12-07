@@ -1,0 +1,289 @@
+fileFormatVersion: 2
+guid: c18f88c3beab3934f868fc1820ff7506
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: BN_Backpack_1
+    100002: BN_Backpack_2
+    100004: BN_Backpack_3
+    100006: BN_Backpack_4
+    100008: BN_Backpack_5
+    100010: BN_Body
+    100012: BN_Head
+    100014: BN_Hip
+    100016: BN_L_Gun
+    100018: BN_Left_Arm
+    100020: BN_Left_L_Clamp
+    100022: BN_Left_L_Forarm
+    100024: BN_Left_R_Clamp
+    100026: BN_Left_R_Forarm
+    100028: BN_LeftLeg
+    100030: BN_R_Gun
+    100032: BN_Right_Arm
+    100034: BN_Right_L_CLamp
+    100036: BN_Right_R_Clamp
+    100038: BN_Right_R_Forarm
+    100040: BN_RightLeg
+    100042: BN_Rright_L_Forarm
+    100044: Body
+    100046: Circle008
+    100048: Circle011
+    100050: Con_Body
+    100052: Con_Head
+    100054: Con_Hip
+    100056: Con_Left_Arm
+    100058: Con_Left_L_Clamp
+    100060: Con_Left_L_Forarm
+    100062: Con_Left_leg
+    100064: Con_Left_R_Clamp
+    100066: Con_Left_R_Forarm
+    100068: Con_Right_Arm
+    100070: Con_Right_L_Clamp
+    100072: Con_Right_L_Forarm
+    100074: Con_Right_Leg
+    100076: Con_Right_R_CLamp
+    100078: Con_Right_R_Forarm
+    100080: Dummy001
+    100082: Dummy002
+    100084: Dummy003
+    100086: Dummy004
+    100088: IK Chain001
+    100090: IK Chain002
+    100092: Left_MiniGun
+    100094: Right_Minigun
+    100096: //RootNode
+    400000: BN_Backpack_1
+    400002: BN_Backpack_2
+    400004: BN_Backpack_3
+    400006: BN_Backpack_4
+    400008: BN_Backpack_5
+    400010: BN_Body
+    400012: BN_Head
+    400014: BN_Hip
+    400016: BN_L_Gun
+    400018: BN_Left_Arm
+    400020: BN_Left_L_Clamp
+    400022: BN_Left_L_Forarm
+    400024: BN_Left_R_Clamp
+    400026: BN_Left_R_Forarm
+    400028: BN_LeftLeg
+    400030: BN_R_Gun
+    400032: BN_Right_Arm
+    400034: BN_Right_L_CLamp
+    400036: BN_Right_R_Clamp
+    400038: BN_Right_R_Forarm
+    400040: BN_RightLeg
+    400042: BN_Rright_L_Forarm
+    400044: Body
+    400046: Circle008
+    400048: Circle011
+    400050: Con_Body
+    400052: Con_Head
+    400054: Con_Hip
+    400056: Con_Left_Arm
+    400058: Con_Left_L_Clamp
+    400060: Con_Left_L_Forarm
+    400062: Con_Left_leg
+    400064: Con_Left_R_Clamp
+    400066: Con_Left_R_Forarm
+    400068: Con_Right_Arm
+    400070: Con_Right_L_Clamp
+    400072: Con_Right_L_Forarm
+    400074: Con_Right_Leg
+    400076: Con_Right_R_CLamp
+    400078: Con_Right_R_Forarm
+    400080: Dummy001
+    400082: Dummy002
+    400084: Dummy003
+    400086: Dummy004
+    400088: IK Chain001
+    400090: IK Chain002
+    400092: Left_MiniGun
+    400094: Right_Minigun
+    400096: //RootNode
+    4300000: Body
+    4300002: Left_MiniGun
+    4300004: Right_Minigun
+    7400000: Idle
+    9500000: //RootNode
+    13700000: Body
+    13700002: Left_MiniGun
+    13700004: Right_Minigun
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: BN_Backpack_1
+        weight: 1
+      - path: BN_Backpack_1/BN_Backpack_2
+        weight: 1
+      - path: BN_Backpack_1/BN_Backpack_2/Dummy003
+        weight: 1
+      - path: Body
+        weight: 1
+      - path: Con_Hip
+        weight: 1
+      - path: Con_Hip/BN_Hip
+        weight: 1
+      - path: Dummy001
+        weight: 1
+      - path: Dummy001/Con_Body
+        weight: 1
+      - path: Dummy001/Con_Body/BN_Body
+        weight: 1
+      - path: Dummy001/Con_Body/Con_Head
+        weight: 1
+      - path: Dummy001/Con_Body/Con_Head/BN_Head
+        weight: 1
+      - path: Dummy001/Con_Body/Con_Left_Arm
+        weight: 1
+      - path: Dummy001/Con_Body/Con_Left_Arm/BN_Left_Arm
+        weight: 1
+      - path: Dummy001/Con_Body/Con_Left_Arm/Circle008
+        weight: 1
+      - path: Dummy001/Con_Body/Con_Left_Arm/Circle008/BN_L_Gun
+        weight: 1
+      - path: Dummy001/Con_Body/Con_Left_Arm/Con_Left_L_Forarm
+        weight: 1
+      - path: Dummy001/Con_Body/Con_Left_Arm/Con_Left_L_Forarm/BN_Left_L_Forarm
+        weight: 1
+      - path: Dummy001/Con_Body/Con_Left_Arm/Con_Left_L_Forarm/Con_Left_L_Clamp
+        weight: 1
+      - path: Dummy001/Con_Body/Con_Left_Arm/Con_Left_L_Forarm/Con_Left_L_Clamp/BN_Left_L_Clamp
+        weight: 1
+      - path: Dummy001/Con_Body/Con_Left_Arm/Con_Left_R_Forarm
+        weight: 1
+      - path: Dummy001/Con_Body/Con_Left_Arm/Con_Left_R_Forarm/BN_Left_R_Forarm
+        weight: 1
+      - path: Dummy001/Con_Body/Con_Left_Arm/Con_Left_R_Forarm/Con_Left_R_Clamp
+        weight: 1
+      - path: Dummy001/Con_Body/Con_Left_Arm/Con_Left_R_Forarm/Con_Left_R_Clamp/BN_Left_R_Clamp
+        weight: 1
+      - path: Dummy001/Con_Body/Con_Right_Arm
+        weight: 1
+      - path: Dummy001/Con_Body/Con_Right_Arm/BN_Right_Arm
+        weight: 1
+      - path: Dummy001/Con_Body/Con_Right_Arm/Circle011
+        weight: 1
+      - path: Dummy001/Con_Body/Con_Right_Arm/Circle011/BN_R_Gun
+        weight: 1
+      - path: Dummy001/Con_Body/Con_Right_Arm/Con_Right_L_Forarm
+        weight: 1
+      - path: Dummy001/Con_Body/Con_Right_Arm/Con_Right_L_Forarm/BN_Rright_L_Forarm
+        weight: 1
+      - path: Dummy001/Con_Body/Con_Right_Arm/Con_Right_L_Forarm/Con_Right_L_Clamp
+        weight: 1
+      - path: Dummy001/Con_Body/Con_Right_Arm/Con_Right_L_Forarm/Con_Right_L_Clamp/BN_Right_L_CLamp
+        weight: 1
+      - path: Dummy001/Con_Body/Con_Right_Arm/Con_Right_R_Forarm
+        weight: 1
+      - path: Dummy001/Con_Body/Con_Right_Arm/Con_Right_R_Forarm/BN_Right_R_Forarm
+        weight: 1
+      - path: Dummy001/Con_Body/Con_Right_Arm/Con_Right_R_Forarm/Con_Right_R_CLamp
+        weight: 1
+      - path: Dummy001/Con_Body/Con_Right_Arm/Con_Right_R_Forarm/Con_Right_R_CLamp/BN_Right_R_Clamp
+        weight: 1
+      - path: Dummy002
+        weight: 1
+      - path: Dummy002/Con_Left_leg
+        weight: 1
+      - path: Dummy002/Con_Left_leg/BN_LeftLeg
+        weight: 1
+      - path: Dummy002/Con_Right_Leg
+        weight: 1
+      - path: Dummy002/Con_Right_Leg/BN_RightLeg
+        weight: 1
+      - path: Dummy004
+        weight: 1
+      - path: Dummy004/BN_Backpack_3
+        weight: 1
+      - path: Dummy004/BN_Backpack_3/BN_Backpack_4
+        weight: 1
+      - path: Dummy004/BN_Backpack_3/BN_Backpack_4/BN_Backpack_5
+        weight: 1
+      - path: IK Chain001
+        weight: 1
+      - path: IK Chain002
+        weight: 1
+      - path: Left_MiniGun
+        weight: 1
+      - path: Right_Minigun
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
