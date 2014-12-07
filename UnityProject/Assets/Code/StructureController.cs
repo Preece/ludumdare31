@@ -12,6 +12,7 @@ public class StructureController : MonoBehaviour {
 
 	public LayerMask obstructions;
 	public LayerMask rawResources;
+	public LayerMask ground;
 
 	// Use this for initialization
 	void Start () {

@@ -15,6 +15,7 @@ public class PauseState {
 
 	LayerMask obstructions;
 	LayerMask rawResources;
+	LayerMask ground;
 
 	Dictionary<string, ResourceNode> prefabs = new Dictionary<string, ResourceNode>();
 
@@ -35,13 +36,14 @@ public class PauseState {
 
 		obstructions = GameObject.Find("Structures").GetComponent<StructureController>().obstructions;
 		rawResources = GameObject.Find("Structures").GetComponent<StructureController>().rawResources;
+		ground = GameObject.Find("Structures").GetComponent<StructureController>().ground;
 	}
 	
 	// Update is called once per frame
 	public void Update () {
 		Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 		RaycastHit hit; 
-		Physics.Raycast (ray, out hit, 100);
+		Physics.Raycast (ray, out hit, 100, ground);
 
 		if(placementStructure != null) {
 			placementStructure.transform.position = hit.point;
@@ -51,7 +53,6 @@ public class PauseState {
 			DestroyPlacementStructure();
 			placementStructure = GameObject.Instantiate(prefabs["pipe"], Vector3.zero, Quaternion.identity) as ResourceNode;
 			mouseFunc = MouseFunc.prePiping;
-			Debug.Log("pre pipin");
 		}
 
 		if(Input.GetKeyDown(KeyCode.Alpha2)) {
@@ -126,7 +127,7 @@ public class PauseState {
 			Collider[] collides = Physics.OverlapSphere (pos, 3.0f, obstructions);
 
 			if(placementStructure != null && collides.Length == 0) {
-				GameObject.Instantiate (placementStructure, pos, Quaternion.identity);
+				ResourceNode nodezz = GameObject.Instantiate (placementStructure, pos, Quaternion.identity) as ResourceNode;
 				DestroyPlacementStructure();
 			}
 		}
@@ -174,7 +175,9 @@ public class PauseState {
 
 			if(pipeLength == 0){
 				pipeLength = pipeComp.mesh.mesh.bounds.size.z; //this may be the wrong axis, will need checking
+			} 
 
+			if(prevPipe == null) {
 				//set the first section of pipe as a feedee of the start object
 				startObject.GetComponent<ResourceNode>().AddFeedee(pipeComp);
 				prevPipe = pipeComp;
@@ -183,6 +186,7 @@ public class PauseState {
 				prevPipe.AddFeedee(pipeComp);
 				prevPipe = pipeComp;
 			}
+
 			thePipe.transform.forward = direction; //have it look towards the end position
 			thePipe.transform.position = startObject.transform.position + direction * laidPipeDistance; //tells it where to be
 			thePipe.transform.parent = pipeParent.transform; 

@@ -246,6 +246,7 @@ MonoBehaviour:
   rawToFuel: 1
   rawToParts: 1
   processingRate: 1
+  output: 1
 --- !u!23 &537845246
 Renderer:
   m_ObjectHideFlags: 0
@@ -506,6 +507,7 @@ MonoBehaviour:
   rawToFuel: 1
   rawToParts: 1
   processingRate: 1
+  output: 1
 --- !u!23 &849068641
 Renderer:
   m_ObjectHideFlags: 0
@@ -675,6 +677,7 @@ MonoBehaviour:
   rawToFuel: 1
   rawToParts: 1
   processingRate: 1
+  output: 1
 --- !u!23 &939291471
 Renderer:
   m_ObjectHideFlags: 0
@@ -828,6 +831,7 @@ MonoBehaviour:
   rawToFuel: 1
   rawToParts: 1
   processingRate: 1
+  output: 1
 --- !u!135 &1083855715
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1072,6 +1076,7 @@ MonoBehaviour:
   rawToFuel: 1
   rawToParts: 1
   processingRate: 1
+  output: 1
 --- !u!23 &1365146476
 Renderer:
   m_ObjectHideFlags: 0
@@ -1169,6 +1174,7 @@ MonoBehaviour:
   rawToFuel: 1
   rawToParts: 1
   processingRate: 1
+  output: 1
 --- !u!23 &1536805725
 Renderer:
   m_ObjectHideFlags: 0
@@ -1335,6 +1341,7 @@ MonoBehaviour:
   rawToFuel: 1
   rawToParts: 1
   processingRate: 1
+  output: 1
 --- !u!23 &1640741237
 Renderer:
   m_ObjectHideFlags: 0
@@ -1500,6 +1507,18 @@ Prefab:
       propertyPath: m_Center.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 030a44c198833ae41875ad4405be0b33, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 030a44c198833ae41875ad4405be0b33, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 030a44c198833ae41875ad4405be0b33, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 030a44c198833ae41875ad4405be0b33, type: 2}
   m_RootGameObject: {fileID: 1083855712}
@@ -1557,6 +1576,9 @@ MonoBehaviour:
   rawResources:
     serializedVersion: 2
     m_Bits: 4096
+  ground:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1001 &1956300392
 Prefab:
   m_ObjectHideFlags: 0

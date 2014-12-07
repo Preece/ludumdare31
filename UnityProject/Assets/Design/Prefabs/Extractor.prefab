@@ -272,6 +272,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b0aebafc8ba7114ea4d6438897beb1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  raw: 0
+  fuel: 0
+  parts: 0
   resourceCapacity: 100
   outputRaw: 1
   outputFuel: 1
@@ -280,6 +283,7 @@ MonoBehaviour:
   rawToFuel: 1
   rawToParts: 1
   processingRate: 1
+  output: .80000001192092896
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -168,6 +168,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af4428c019f35843ab6513b48abdeef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  raw: 0
+  fuel: 0
+  parts: 0
   resourceCapacity: 100
   outputRaw: 1
   outputFuel: 1
@@ -176,6 +179,7 @@ MonoBehaviour:
   rawToFuel: 1
   rawToParts: 1
   processingRate: 1
+  output: 1
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

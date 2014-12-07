@@ -9,13 +9,6 @@ public class RawMaterials : ResourceNode {
 
 		double outputAmt = output;
 
-		if(output > raw) {
-			outputAmt = raw;
-			raw = 0;
-		} else {
-			raw -= output;
-		}
-
 		List<ResourceNode> activeFeedees = new List<ResourceNode>();
 
 		for(int i = 0; i < feedees.Count; i++) {
@@ -23,6 +16,16 @@ public class RawMaterials : ResourceNode {
 				activeFeedees.Add(feedees[i]);
 			}
 		}
+
+		if(activeFeedees.Count == 0) return;
+		
+		if(output > raw) {
+			outputAmt = raw;
+			raw = 0;
+		} else {
+			raw -= output;
+		}
+
 
 		for(int i = 0; i < activeFeedees.Count; i++) {
 			double amttt = outputAmt;

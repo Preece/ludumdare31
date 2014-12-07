@@ -54,7 +54,7 @@ public class Game : MonoBehaviour {
 
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 			RaycastHit hit; 
-			if (Physics.Raycast (ray, out hit, 100, groundOnly)) {
+			if (Physics.Raycast(ray, out hit, 100, groundOnly)) {
 
 				if(paused) {
 					pauseState.LeftRelease(hit.point);
