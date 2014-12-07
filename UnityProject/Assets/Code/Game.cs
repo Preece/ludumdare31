@@ -14,6 +14,8 @@ public class Game : MonoBehaviour {
 	void Start () {
 		playState.Start ();
 		pauseState.Start ();
+
+		SpawnRawMaterials();
 	}
 	
 	// Update is called once per frame
@@ -29,10 +31,14 @@ public class Game : MonoBehaviour {
 		}
 
 		if(Input.GetMouseButtonDown (0)) {
+			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+			RaycastHit hit; 
+			Physics.Raycast (ray, out hit, 100, groundOnly);
+
 			if(paused) {
-				pauseState.LeftClick(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+				pauseState.LeftClick(hit.point);
 			} else {
-				playState.LeftClick(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+				playState.LeftClick(hit.point);
 			}
 		}
 
@@ -61,5 +67,9 @@ public class Game : MonoBehaviour {
 
 	public bool Paused() {
 		return paused;
+	}
+
+	public void SpawnRawMaterials() {
+
 	}
 }
