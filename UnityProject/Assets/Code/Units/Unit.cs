@@ -4,11 +4,13 @@ using System.Collections;
 public class Unit : MonoBehaviour {
 
 	protected NavMeshAgent _agent;
-	protected Transform _target; 
+	protected Transform _moveTarget; 
 	protected UnitManager _manager;
 	protected bool _play; 
 
-
+	[SerializeField]
+	protected float _health;
+	public float Health { get { return _health; } set { _health = value; } }
 
 	public void Pause(){
 		_agent.Stop ();
@@ -19,8 +21,8 @@ public class Unit : MonoBehaviour {
 		_play = true; 
 	}
 	public virtual void GoHere(Vector3 _destination){
-		_target.position = _destination; 
-		_agent.destination = _target.position; 
+		_moveTarget.position = _destination; 
+		_agent.destination = _moveTarget.position; 
 	}
 	protected virtual void AddToList(){
 		_manager.AddToLists (this);
@@ -31,8 +33,8 @@ public class Unit : MonoBehaviour {
 	}
 	void Start(){
 		_agent = GetComponent<NavMeshAgent> (); 
-		_target = new GameObject ().GetComponent<Transform> (); 
-		_target.name = this.name + "-Target"; 
+		_moveTarget = new GameObject ().GetComponent<Transform> (); 
+		_moveTarget.name = this.name + "-Target"; 
 		_manager = GameObject.Find ("GameController").GetComponent<UnitManager> (); 
 
 		AddToList (); 
