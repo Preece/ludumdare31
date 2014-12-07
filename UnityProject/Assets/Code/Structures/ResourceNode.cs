@@ -5,9 +5,9 @@ using System.Collections.Generic;
 public class ResourceNode : MonoBehaviour {
 
 	//the types of materials
-	protected double raw;
-	protected double fuel;
-	protected double parts;
+	public double raw;
+	public double fuel;
+	public double parts;
 
 	//the total amount of resources that can be houses here at one time
 	public int resourceCapacity = 100;
@@ -22,10 +22,11 @@ public class ResourceNode : MonoBehaviour {
 	//a multiplier for a default rate (200ms). 1.0 = 1x
 	public double processingRate = 1.0;
 	private double processingTimer = 0.0;
+	public double output = 1;
 
 	//what feeds this node and what it flows to
-	List<ResourceNode> feeders = new List<ResourceNode>();
-	List<ResourceNode> feedees = new List<ResourceNode>();
+	protected List<ResourceNode> feeders = new List<ResourceNode>();
+	protected List<ResourceNode> feedees = new List<ResourceNode>();
 	
 	void Start () {
 
@@ -50,15 +51,15 @@ public class ResourceNode : MonoBehaviour {
 	public double GetFuel() { return fuel; }
 	public double GetParts() { return parts; }
 
-	public void AddRaw(int amt) {
+	public void AddRaw(double amt) {
 		raw += amt;
 	}
 
-	public void AddFuel(int amt) {
+	public void AddFuel(double amt) {
 		fuel += amt;
 	}
 
-	public void AddParts(int amt) {
+	public void AddParts(double amt) {
 		parts += amt;
 	}
 

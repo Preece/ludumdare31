@@ -11,6 +11,7 @@ public class StructureController : MonoBehaviour {
 	public RawMaterials rawMaterials;
 
 	public LayerMask obstructions;
+	public LayerMask rawResources;
 
 	// Use this for initialization
 	void Start () {

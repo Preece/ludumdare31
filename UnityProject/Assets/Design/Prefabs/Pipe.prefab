@@ -214,7 +214,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69601abf92f5a8546a8d1e448896d0c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceCapacity: 100
+  raw: 0
+  fuel: 0
+  parts: 0
+  resourceCapacity: 10
   outputRaw: 1
   outputFuel: 1
   outputParts: 1

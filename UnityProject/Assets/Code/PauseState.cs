@@ -14,10 +14,11 @@ public class PauseState {
 	Pipe pipGhost;
 
 	LayerMask obstructions;
+	LayerMask rawResources;
 
 	Dictionary<string, ResourceNode> prefabs = new Dictionary<string, ResourceNode>();
 
-	enum MouseFunc { moving, dragging, prePiping, piping, placing };
+	enum MouseFunc { moving, dragging, prePiping, piping, placing, placingExtractor };
 	MouseFunc mouseFunc = MouseFunc.moving;
 
 	private GameObject pipeStarter;
@@ -33,7 +34,7 @@ public class PauseState {
 		prefabs.Add("pipe", GameObject.Find ("Structures").GetComponent<StructureController> ().pipe);
 
 		obstructions = GameObject.Find("Structures").GetComponent<StructureController>().obstructions;
-	
+		rawResources = GameObject.Find("Structures").GetComponent<StructureController>().rawResources;
 	}
 	
 	// Update is called once per frame
@@ -56,7 +57,7 @@ public class PauseState {
 		if(Input.GetKeyDown(KeyCode.Alpha2)) {
 			DestroyPlacementStructure();
 			placementStructure = GameObject.Instantiate(prefabs["extractor"], Vector3.zero, Quaternion.identity) as ResourceNode;
-			mouseFunc = MouseFunc.placing;
+			mouseFunc = MouseFunc.placingExtractor;
 		}
 
 		if(Input.GetKeyDown(KeyCode.Alpha3)) {
@@ -70,6 +71,10 @@ public class PauseState {
 			placementStructure = GameObject.Instantiate(prefabs["refinery"], Vector3.zero, Quaternion.identity) as ResourceNode;
 			mouseFunc = MouseFunc.placing;
 		}
+
+		if(selectedStructure != null) {
+			Debug.Log(selectedStructure.GetRaw());
+		}
 	}
 
 	public void Play() {
@@ -81,28 +86,27 @@ public class PauseState {
 		//1. they are placing a structure that was selected
 		//2. they are selecting a building that was already placed
 
+		Collider[] buildings = Physics.OverlapSphere (pos, 0.2f, obstructions);
+
 		//if there is no placement structure, they are trying to select something
 		if(mouseFunc == MouseFunc.moving) {
-
+			if(buildings.Length > 0) {
+				selectedStructure = buildings[0].gameObject.GetComponent<ResourceNode>();
+			}
 		} 
 		//if they have selected the pipe, they are trying to start the pipe
 		else if(mouseFunc == MouseFunc.prePiping) {
-			
-			Collider[] collides = Physics.OverlapSphere (pos, 0.2f, obstructions);
 
-			if(collides.Length > 0) {
-				Debug.Log("layin pipez start");
-				pipeStarter = collides[0].gameObject;
+			if(buildings.Length > 0) {
+				pipeStarter = buildings[0].gameObject;
 				mouseFunc = MouseFunc.piping;
 			}
 		}
 		//if they have the pipe selected and hooked to something, they are piping
 		else if(mouseFunc == MouseFunc.piping) {
-			Debug.Log("layin pipez");
-			Collider[] collides = Physics.OverlapSphere (pos, 0.2f, obstructions);
 
-			if(collides.Length > 0) {
-				MakePipes(pipeStarter, collides[0].gameObject, prefabs["pipe"]);
+			if(buildings.Length > 0) {
+				MakePipes(pipeStarter, buildings[0].gameObject, prefabs["pipe"]);
 				DestroyPlacementStructure();
 				mouseFunc = MouseFunc.moving;
 			}
@@ -112,6 +116,7 @@ public class PauseState {
 
 	public void RightClick(Vector3 pos) {
 		DestroyPlacementStructure();
+		selectedStructure = null;
 		
 	}
 
@@ -125,6 +130,19 @@ public class PauseState {
 				DestroyPlacementStructure();
 			}
 		}
+		//if they are trying to place an extractor
+		else if(mouseFunc == MouseFunc.placingExtractor) {
+			Collider[] collides = Physics.OverlapSphere (pos, 3.0f, obstructions);
+			Collider[] rezzys = Physics.OverlapSphere(pos, 1, rawResources);
+
+			if(placementStructure != null && collides.Length == 0 && rezzys.Length != 0) {
+				ResourceNode newExtractor = GameObject.Instantiate (placementStructure, pos, Quaternion.identity) as ResourceNode;
+				DestroyPlacementStructure();
+
+				//set the extractor to be fed by the resource
+				rezzys[0].gameObject.GetComponent<RawMaterials>().AddFeedee(newExtractor.GetComponent<Extractor>());
+			}
+		}
 	}
 
 	private void DestroyPlacementStructure() {
@@ -135,32 +153,45 @@ public class PauseState {
 		}
 	}
 
-	public GameObject MakePipes(GameObject _startObject, GameObject endPositionObj, ResourceNode _pipe){
-		Vector3 _direction = (endPositionObj.transform.position - _startObject.transform.position).normalized; //get the direction of the pieps
-		Debug.Log (_startObject.transform.position + " | " + endPositionObj.transform.position); 
-		float _distance = Vector3.Distance (_startObject.transform.position, endPositionObj.transform.position);  //how far are they?
-		Debug.Log (_distance); 
+	public GameObject MakePipes(GameObject startObject, GameObject endPositionObj, ResourceNode pipe) {
+
+		Vector3 direction = (endPositionObj.transform.position - startObject.transform.position).normalized; //get the direction of the pieps 
+		float distance = Vector3.Distance (startObject.transform.position, endPositionObj.transform.position);  //how far are they?
+
 		GameObject pipeParent = new GameObject ();  //make the parent object
-		pipeParent.transform.position = _startObject.transform.position + _distance * .5f * _direction; // put it in the middle
-		pipeParent.transform.position = new Vector3(0,0,0) + _distance * .5f * _direction; // put it in the middle
-		pipeParent.name = "PipesFrom " + _startObject.name; 
-		float _laidPipeDistance = 0; 
-		float _pipeLength = 0; 
-		Debug.Log (_distance); 
-		while (_laidPipeDistance < _distance) { //this will keep making pipe, till you've reached your destination
-			ResourceNode _thePipe = GameObject.Instantiate(_pipe) as ResourceNode; 
-			if(_thePipe == null){
-				Debug.Log("no pipe object"); 
+		pipeParent.transform.position = startObject.transform.position + distance * .5f * direction; // put it in the middle
+		pipeParent.transform.position = new Vector3(0,0,0) + distance * .5f * direction; // put it in the middle
+		pipeParent.name = "PipesFrom " + startObject.name; 
+		float laidPipeDistance = 0; 
+		float pipeLength = 0; 
+
+		Pipe prevPipe = null;
+
+		while (laidPipeDistance < distance) { //this will keep making pipe, till you've reached your destination
+			ResourceNode thePipe = GameObject.Instantiate(pipe) as ResourceNode; 
+
+			Pipe pipeComp  = thePipe.GetComponent<Pipe>(); 
+
+			if(pipeLength == 0){
+				pipeLength = pipeComp.mesh.mesh.bounds.size.z; //this may be the wrong axis, will need checking
+
+				//set the first section of pipe as a feedee of the start object
+				startObject.GetComponent<ResourceNode>().AddFeedee(pipeComp);
+				prevPipe = pipeComp;
+			} else {
+				//otherwise, set the previous pipe section as being fed by this current section
+				prevPipe.AddFeedee(pipeComp);
+				prevPipe = pipeComp;
 			}
-			Pipe _pipeComp  = _thePipe.GetComponent<Pipe>(); 
-			if(_pipeLength == 0){
-				_pipeLength = _pipeComp.mesh.mesh.bounds.size.z; //this may be the wrong axis, will need checking
-			}
-			_thePipe.transform.forward = _direction; //have it look towards the end position
-			_thePipe.transform.position = _startObject.transform.position + _direction * _laidPipeDistance; //tells it where to be
-			_thePipe.transform.parent = pipeParent.transform; 
-			_laidPipeDistance += _pipeLength; 
+			thePipe.transform.forward = direction; //have it look towards the end position
+			thePipe.transform.position = startObject.transform.position + direction * laidPipeDistance; //tells it where to be
+			thePipe.transform.parent = pipeParent.transform; 
+			laidPipeDistance += pipeLength; 
 		}
+
+		//connect the end object as a feedee of the last section of pipe
+		prevPipe.AddFeedee(endPositionObj.GetComponent<ResourceNode>());
+
 		return pipeParent; 
 	}
 }
