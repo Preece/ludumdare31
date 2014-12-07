@@ -157,13 +157,8 @@ MonoBehaviour:
   raw: 0
   fuel: 0
   parts: 0
-  resourceCapacity: 100
-  outputRaw: 1
-  outputFuel: 1
-  outputParts: 1
-  health: 100
-  rawToFuel: 1
-  rawToParts: 1
+  resourceCapacity: 10000
+  health: 500
   processingRate: 1
   output: 1
 --- !u!135 &13500002

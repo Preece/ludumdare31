@@ -11,13 +11,8 @@ public class ResourceNode : MonoBehaviour {
 
 	//the total amount of resources that can be houses here at one time
 	public int resourceCapacity = 100;
-	public bool outputRaw = true;
-	public bool outputFuel = true;
-	public bool outputParts = true;
 
 	public int health = 100;
-	public int rawToFuel = 1;
-	public int rawToParts = 1;
 
 	//a multiplier for a default rate (200ms). 1.0 = 1x
 	public double processingRate = 1.0;

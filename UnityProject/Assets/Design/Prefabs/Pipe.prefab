@@ -215,14 +215,9 @@ MonoBehaviour:
   fuel: 0
   parts: 0
   resourceCapacity: 10
-  outputRaw: 1
-  outputFuel: 1
-  outputParts: 1
   health: 10
-  rawToFuel: 1
-  rawToParts: 1
   processingRate: 1
-  output: 1
+  output: .10000000149011612
   mesh: {fileID: 3300004}
 --- !u!135 &13500000
 SphereCollider:

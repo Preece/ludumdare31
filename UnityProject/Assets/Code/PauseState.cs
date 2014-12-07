@@ -72,7 +72,7 @@ public class PauseState {
 		}
 
 		if(selectedStructure != null) {
-			Debug.Log(selectedStructure.GetRaw());
+			Debug.Log("Raw: " + selectedStructure.GetRaw() + " Fuel: " + selectedStructure.GetFuel() + " Parts: " + selectedStructure.GetParts());
 		}
 	}
 
