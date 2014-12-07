@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class UnitManager : MonoBehaviour {
 	
-	List<Worker> _workers = new List<Worker>(); 
+	public List<Worker> _workers = new List<Worker>(); 
 	List<Enemy> _enemies = new List<Enemy>(); 
 	List<Worker> _selectedUnits = new List<Worker> (); 	
 

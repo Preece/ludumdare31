@@ -62,6 +62,7 @@
      <Compile Include="Assets\Code\Units\Unit.cs" />
      <Compile Include="Assets\Code\Units\UnitManager.cs" />
      <Compile Include="Assets\Code\Units\Worker.cs" />
+     <Compile Include="Assets\Scratch_Wolff\TestScript.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
  </Reference>

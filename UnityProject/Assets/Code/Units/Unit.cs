@@ -3,34 +3,42 @@ using System.Collections;
 
 public class Unit : MonoBehaviour {
 
-	NavMeshAgent _agent;
-	Transform _target; 
-	UnitManager _manager;
+	protected NavMeshAgent _agent;
+	protected Transform _target; 
+	protected UnitManager _manager;
+	protected bool _play; 
 
 
 
 	public void Pause(){
 		_agent.Stop ();
+		_play = false; 
 	}
 	public void Play(){
 		_agent.Resume ();
+		_play = true; 
 	}
-	public void GoHere(Vector3 _destination){
+	public virtual void GoHere(Vector3 _destination){
 		_target.position = _destination; 
+		_agent.destination = _target.position; 
 	}
-	void AddToList(){
+	protected virtual void AddToList(){
 		_manager.AddToLists (this);
 	}
-	void Died(){
+	protected virtual void Died(){
 		_manager.Died (this); 
 		Destroy (gameObject); 
 	}
 	void Start(){
 		_agent = GetComponent<NavMeshAgent> (); 
 		_target = new GameObject ().GetComponent<Transform> (); 
+		_target.name = this.name + "-Target"; 
 		_manager = GameObject.Find ("GameController").GetComponent<UnitManager> (); 
 
 		AddToList (); 
+	}
+	void Update(){
+		
 	}
 
 	/*
