@@ -16,4 +16,12 @@ public class PlayState {
 	public void Pause() {
 
 	}
+
+	public void LeftClick(Vector3 pos) {
+	
+	}
+
+	public void LeftRelease(Vector3 pos) {
+		
+	}
 }

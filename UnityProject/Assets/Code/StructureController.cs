@@ -10,6 +10,8 @@ public class StructureController : MonoBehaviour {
 	public Pipe pipe;
 	public RawMaterials rawMaterials;
 
+	public LayerMask obstructions;
+
 	// Use this for initialization
 	void Start () {
 	

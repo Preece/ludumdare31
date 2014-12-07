@@ -1,24 +1,31 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ResourceNode : MonoBehaviour {
 
 	//the types of materials
-	protected int raw;
-	protected int fuel;
-	protected int parts;
+	protected double raw;
+	protected double fuel;
+	protected double parts;
+
+	//the total amount of resources that can be houses here at one time
+	public int resourceCapacity = 100;
+	public bool outputRaw = true;
+	public bool outputFuel = true;
+	public bool outputParts = true;
 
 	public int health = 100;
 	public int rawToFuel = 1;
 	public int rawToParts = 1;
 
 	//a multiplier for a default rate (200ms). 1.0 = 1x
-	protected double processingRate = 1.0;
+	public double processingRate = 1.0;
 	private double processingTimer = 0.0;
 
 	//what feeds this node and what it flows to
-	ResourceNode feeder = null;
-	ResourceNode feedee = null;
+	List<ResourceNode> feeders = new List<ResourceNode>();
+	List<ResourceNode> feedees = new List<ResourceNode>();
 	
 	void Start () {
 
@@ -36,9 +43,12 @@ public class ResourceNode : MonoBehaviour {
 
 	}
 
-	public int GetRaw() { return raw; }
-	public int GetFuel() { return fuel; }
-	public int GetParts() { return parts; }
+	public void AddFeeder(ResourceNode node) { feeders.Add(node); }
+	public void AddFeedee(ResourceNode node) { feedees.Add(node); }
+
+	public double GetRaw() { return raw; }
+	public double GetFuel() { return fuel; }
+	public double GetParts() { return parts; }
 
 	public void AddRaw(int amt) {
 		raw += amt;
@@ -50,5 +60,13 @@ public class ResourceNode : MonoBehaviour {
 
 	public void AddParts(int amt) {
 		parts += amt;
+	}
+
+	//each node should check that its feedee is not at capacity before transferring resources
+	public bool AtCapacity() {
+		if(raw + fuel + parts >= resourceCapacity)
+			return true;
+		else
+			return false;
 	}
 }
