@@ -58,6 +58,10 @@
      <Compile Include="Assets\Code\Structures\Refinery.cs" />
      <Compile Include="Assets\Code\Structures\ResourceNode.cs" />
      <Compile Include="Assets\Code\UI\Timer.cs" />
+     <Compile Include="Assets\Code\Units\Enemy.cs" />
+     <Compile Include="Assets\Code\Units\Unit.cs" />
+     <Compile Include="Assets\Code\Units\UnitManager.cs" />
+     <Compile Include="Assets\Code\Units\Worker.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
  </Reference>
