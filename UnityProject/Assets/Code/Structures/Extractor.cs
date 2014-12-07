@@ -17,7 +17,7 @@ public class Extractor : ResourceNode {
 		}
 
 		if(activeFeedees.Count == 0) return;
-		
+
 		if(output > raw) {
 			outputAmt = raw;
 			raw = 0;

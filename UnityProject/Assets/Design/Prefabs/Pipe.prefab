@@ -218,7 +218,7 @@ MonoBehaviour:
   outputRaw: 1
   outputFuel: 1
   outputParts: 1
-  health: 100
+  health: 10
   rawToFuel: 1
   rawToParts: 1
   processingRate: 1

@@ -7,12 +7,6 @@ public class PauseState {
 	ResourceNode selectedStructure = null;
 	ResourceNode placementStructure = null;
 
-	CommandCenter comGhost;
-	Extractor extGhost;
-	Refinery refGhost;
-	Fabricator fabGhost;
-	Pipe pipGhost;
-
 	LayerMask obstructions;
 	LayerMask rawResources;
 	LayerMask ground;

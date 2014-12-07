@@ -45,7 +45,10 @@ public class ResourceNode : MonoBehaviour {
 	}
 
 	public void AddFeeder(ResourceNode node) { feeders.Add(node); }
-	public void AddFeedee(ResourceNode node) { feedees.Add(node); }
+	public void AddFeedee(ResourceNode node) { 
+		feedees.Add(node); 
+		Debug.Log("Connection established from " + this + " to " + node);
+	}
 
 	public double GetRaw() { return raw; }
 	public double GetFuel() { return fuel; }
