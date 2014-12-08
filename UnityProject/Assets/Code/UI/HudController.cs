@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class HudController : MonoBehaviour {
 
 	int _remainingWorkers;
 	public int WorkersLeft {get{ return _remainingWorkers;}set{_remainingWorkers = value;}}
+	public Text enemiesKilledText;
+	public Text remainingWorkersText;
+
 
 	int _enemiesKiled; 
 
@@ -33,5 +37,9 @@ public class HudController : MonoBehaviour {
 	}
 	public void Pause(){
 		
+	}
+	void OnGUI(){
+		remainingWorkersText.text = _remainingWorkers.ToString();
+		enemiesKilledText.text = _enemiesKiled.ToString(); 
 	}
 }
