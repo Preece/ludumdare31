@@ -37,6 +37,10 @@ public class Worker : Unit {
 		_targetStructure = null; 
 		_anim.SetBool("Building", false); 
 		detector.NoLongerLooking (); 
+
+		foreach (SkinnedMeshRenderer _theMesh in theMeshes) {
+			_theMesh.material.color = healthTint.Evaluate (100-_health); 
+		}
 	}
 
 	public void FoundEnemy(Enemy _theEnemy){
@@ -191,6 +195,11 @@ public class Worker : Unit {
 		}
 		else{
 			_agent.destination = _moveTarget.position; 
+		}
+	}
+	void Start(){
+		foreach (SkinnedMeshRenderer _theMesh in theMeshes) {
+			_theMesh.material.color = healthTint.Evaluate (100-_health); 
 		}
 	}
 

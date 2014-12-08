@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Unit : MonoBehaviour {
 
@@ -7,7 +8,10 @@ public class Unit : MonoBehaviour {
 	protected Transform _moveTarget; 
 	protected UnitManager _manager;
 	protected Animator _anim; 
-	public bool _play = true; 
+	protected bool _play = true; 
+
+	public Gradient healthTint; 
+	public  List<SkinnedMeshRenderer> theMeshes = new List<SkinnedMeshRenderer>(); 
 
 	[SerializeField]
 	protected float _health = 100;
@@ -15,6 +19,7 @@ public class Unit : MonoBehaviour {
 
 	public void Pause(){
 		_agent.Stop ();
+		_agent.velocity = Vector3.zero; 
 		_anim.speed = 0;
 		_play = false; 
 	}
