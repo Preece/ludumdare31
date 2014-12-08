@@ -3,8 +3,8 @@ using System.Collections;
 
 public class Game : MonoBehaviour {
 
-	private PlayState playState = new PlayState();
-	private PauseState pauseState = new PauseState();
+	public PlayState playState = new PlayState();
+	public PauseState pauseState = new PauseState();
 
 	public LayerMask groundOnly;
 

@@ -18,29 +18,37 @@ public class HudController : MonoBehaviour {
 	}
 
 	public void MakeExtractor(){
-	
+		GameObject.Find("GameController").GetComponent<Game>().pauseState.makeExtractor = true;
 	}
+
 	public void MakePipes(){
-		
+		GameObject.Find("GameController").GetComponent<Game>().pauseState.makePipe = true;
 	}
+
 	public void MakeRefinery(){
-		
+		GameObject.Find("GameController").GetComponent<Game>().pauseState.makeRefinery = true;
 	}
+
 	public void MakeFabricator(){
-	
+		GameObject.Find("GameController").GetComponent<Game>().pauseState.makeFabricator = true;
 	}
+
 	public void SelectBuilging(ResourceNode _bulding){
 
 	}
+
 	public void Play(){
 	
 	}
+
 	public void Pause(){
 		
 	}
+
 	public void Timer(string _currentTime){
 		theTime.text = _currentTime; 
 	}
+
 	void OnGUI(){
 		remainingWorkersText.text = _remainingWorkers.ToString();
 		enemiesKilledText.text = _enemiesKiled.ToString(); 
