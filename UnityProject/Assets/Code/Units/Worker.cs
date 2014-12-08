@@ -156,8 +156,12 @@ public class Worker : Unit {
 		}
 	}
 
+	public double repairTimer = 0;
+
 	void RepairStructure(){ //the actual process of repairing
-		
+		if(Time.time > repairTimer) {
+			repairTimer = Time.time + 0.5;
+		}
 	}
 
 

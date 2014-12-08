@@ -770,7 +770,7 @@ GameObject:
   - 135: {fileID: 13500002}
   m_Layer: 10
   m_Name: Worker
-  m_TagString: Untagged
+  m_TagString: SelectableUnit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
