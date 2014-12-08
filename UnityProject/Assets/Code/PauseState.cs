@@ -20,6 +20,11 @@ public class PauseState {
 
 	private GameObject pipeStarter;
 
+	public bool makePipe = false;
+	public bool makeExtractor = false;
+	public bool makeFabricator = false;
+	public bool makeRefinery = false;
+
 
 	// Use this for initialization
 	public void Start () {
@@ -46,32 +51,40 @@ public class PauseState {
 			placementStructure.transform.position = hit.point;
 		}
 
-		if(Input.GetKeyDown(KeyCode.Alpha1)) {
+		if(Input.GetKeyDown(KeyCode.Alpha1) || makePipe) {
 			DestroyPlacementStructure();
 			placementStructure = GameObject.Instantiate(prefabs["pipe"], Vector3.zero, Quaternion.identity) as ResourceNode;
 			placementStructure.gameObject.layer = 0;
 			mouseFunc = MouseFunc.prePiping;
+
+			makePipe = false;
 		}
 
-		if(Input.GetKeyDown(KeyCode.Alpha2)) {
+		if(Input.GetKeyDown(KeyCode.Alpha2) || makeExtractor) {
 			DestroyPlacementStructure();
 			placementStructure = GameObject.Instantiate(prefabs["extractor"], Vector3.zero, Quaternion.identity) as ResourceNode;
 			placementStructure.gameObject.layer = 0;
 			mouseFunc = MouseFunc.placingExtractor;
+
+			makeExtractor = false;
 		}
 
-		if(Input.GetKeyDown(KeyCode.Alpha3)) {
+		if(Input.GetKeyDown(KeyCode.Alpha3) || makeFabricator) {
 			DestroyPlacementStructure();
 			placementStructure = GameObject.Instantiate(prefabs["fabricator"], Vector3.zero, Quaternion.identity) as ResourceNode;
 			placementStructure.gameObject.layer = 0;
 			mouseFunc = MouseFunc.placing;
+
+			makeFabricator = false;
 		}
 
-		if(Input.GetKeyDown(KeyCode.Alpha4)) {
+		if(Input.GetKeyDown(KeyCode.Alpha4) || makeRefinery) {
 			DestroyPlacementStructure();
 			placementStructure = GameObject.Instantiate(prefabs["refinery"], Vector3.zero, Quaternion.identity) as ResourceNode;
 			placementStructure.gameObject.layer = 0;
 			mouseFunc = MouseFunc.placing;
+
+			makeRefinery = false;
 		}
 
 		if(selectedStructure != null) {
