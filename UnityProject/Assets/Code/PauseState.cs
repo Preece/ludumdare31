@@ -33,6 +33,7 @@ public class PauseState {
 		obstructions = GameObject.Find("Structures").GetComponent<StructureController>().obstructions;
 		rawResources = GameObject.Find("Structures").GetComponent<StructureController>().rawResources;
 		ground = GameObject.Find("Structures").GetComponent<StructureController>().ground;
+		_unitManger = GameObject.Find ("GameController").GetComponent<UnitManager> (); 
 	}
 	
 	// Update is called once per frame
@@ -79,7 +80,8 @@ public class PauseState {
 	}
 
 	public void Play() {
-		_unitManger = GameObject.Find ("GameController").GetComponent<UnitManager> (); 
+		_unitManger.Play ();
+		_unitManger.isPaused = false; 
 	}
 
 	public void LeftClick(Vector3 pos) {

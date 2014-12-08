@@ -17,6 +17,7 @@ public class PlayState {
 
 	public void Pause() {
 		_unitManger.Pause (); 
+		_unitManger.isPaused = true; 
 	}
 
 	public void LeftClick(Vector3 pos) {

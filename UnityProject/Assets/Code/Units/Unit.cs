@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Unit : MonoBehaviour {
 
@@ -7,7 +8,10 @@ public class Unit : MonoBehaviour {
 	protected Transform _moveTarget; 
 	protected UnitManager _manager;
 	protected Animator _anim; 
-	public bool _play = false; 
+	protected bool _play = true; 
+
+	public Gradient healthTint; 
+	public  List<SkinnedMeshRenderer> theMeshes = new List<SkinnedMeshRenderer>(); 
 
 	[SerializeField]
 	protected float _health = 100;
@@ -15,15 +19,17 @@ public class Unit : MonoBehaviour {
 
 	public void Pause(){
 		_agent.Stop ();
+		_agent.velocity = Vector3.zero; 
+		_anim.speed = 0;
 		_play = false; 
 	}
 	protected void AnimControl(){
 		_anim.SetFloat ("Speed", _agent.velocity.magnitude); 
 	}
 	public void Play(){ 
-		Debug.Log ("Play"); 
 		_agent.Resume ();
 		_play = true; 
+		_anim.speed = 1; 
 	}
 	public virtual void GoHere(Vector3 _destination){
 		_moveTarget.position = _destination; 
@@ -45,14 +51,7 @@ public class Unit : MonoBehaviour {
 
 		AddToList (); 
 	}
-	void Start(){
-		if (_manager.GetGameState ()) {
-			Pause();		
-		}
-		else{
-			Play(); 
-		}
-	}
+
 	void Update(){
 		
 	}

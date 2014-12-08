@@ -16,6 +16,7 @@ public class Worker : Unit {
 	public List<Transform> gunPoints = new List<Transform> (); 
 	public Object muzzleFX; 
 	public Object explosionFX;
+	public ParticleSystem _sparks; 
 
 	bool _spawnFireFX = true; 
 	float _animTime; 
@@ -36,7 +37,12 @@ public class Worker : Unit {
 		_repairingStructure = false; 
 		_targetStructure = null; 
 		_anim.SetBool("Building", false); 
+		_sparks.emissionRate =0; 
 		detector.NoLongerLooking (); 
+
+		foreach (SkinnedMeshRenderer _theMesh in theMeshes) {
+			_theMesh.material.color = healthTint.Evaluate (100-_health); 
+		}
 	}
 
 	public void FoundEnemy(Enemy _theEnemy){
@@ -48,6 +54,7 @@ public class Worker : Unit {
 			_targetStructure = null; 
 			_anim.SetBool("Building", false); 
 			_anim.SetBool("Attacking",true); 
+			_sparks.emissionRate =0; 
 			detector.NoLongerLooking(); 
 		}
 	}
@@ -141,6 +148,7 @@ public class Worker : Unit {
 				if (!_agent.hasPath || _agent.velocity.sqrMagnitude == 0f)
 				{
 					Debug.Log("Repairing"); 
+					_sparks.emissionRate = 25; 
 					_anim.SetBool("Building", true); 
 					_repairingStructure = true; 
 				}
@@ -161,7 +169,6 @@ public class Worker : Unit {
 				_theFX.transform.parent = gunPoints[i].transform; 
 				_theFX.transform.position = gunPoints[i].transform.position;
 				_theFX.transform.rotation = gunPoints[i].transform.rotation;
-				Debug.Log(i);
 			}
 			_spawnFireFX = false;
 			DoDamage (); 
@@ -194,6 +201,11 @@ public class Worker : Unit {
 			_agent.destination = _moveTarget.position; 
 		}
 	}
+	void Start(){
+		foreach (SkinnedMeshRenderer _theMesh in theMeshes) {
+			_theMesh.material.color = healthTint.Evaluate (100-_health); 
+		}
+	}
 
 	void Update(){
 		if(_play) {
@@ -204,6 +216,15 @@ public class Worker : Unit {
 			AnimControl (); 
 			//FollowTest (); 
 			FireWeaponFX (); 
+		}
+	}
+	void CheckState(){
+		if (_manager.isPaused ) {
+			Pause();		
+		}
+		else{
+			Play(); 
+			Debug.Log ("Starting in play mode"); 
 		}
 	}
 
