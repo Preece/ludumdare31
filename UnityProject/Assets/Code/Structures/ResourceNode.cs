@@ -9,6 +9,8 @@ public class ResourceNode : MonoBehaviour {
 	public double fuel;
 	public double parts;
 
+	public Game gameController;
+
 	//the total amount of resources that can be houses here at one time
 	public int resourceCapacity = 100;
 
@@ -24,12 +26,12 @@ public class ResourceNode : MonoBehaviour {
 	protected List<ResourceNode> feedees = new List<ResourceNode>();
 	
 	void Start () {
-
+		gameController = GameObject.Find("GameController").GetComponent<Game>() as Game;
 	}
 
 	void Update () {
 		//ask the node to do its process every tick
-		if(Time.time > processingTimer) {
+		if(Time.time > processingTimer && gameController.paused == false) {
 			this.Process();
 			processingTimer = Time.time + (0.2 / processingRate);
 		}

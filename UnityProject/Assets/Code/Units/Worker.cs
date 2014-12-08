@@ -196,13 +196,15 @@ public class Worker : Unit {
 	}
 
 	void Update(){
+		if(_play) {
 			CheckToRepair();
 			StartRepairing();
 			RepairStructure(); 
-		CryHavoc (); 
-		AnimControl (); 
-		FollowTest (); 
-		FireWeaponFX (); 
+			CryHavoc (); 
+			AnimControl (); 
+			//FollowTest (); 
+			FireWeaponFX (); 
+		}
 	}
 
 

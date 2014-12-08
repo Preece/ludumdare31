@@ -4,8 +4,9 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour {
 
-	private float runningTime = 0;
+	public float runningTime = 0;
 	public Text timerText;
+	public double timeInSecs;
 
 	Game game;
 
@@ -27,6 +28,8 @@ public class Timer : MonoBehaviour {
 		float minutes = runningTime / 60; 
 		float seconds = runningTime % 60;
 		float fraction = (runningTime * 100) % 100;
+
+		timeInSecs = runningTime;
 
 		timerText.text = string.Format ("{0:00}:{1:00}:{2:00}", minutes, seconds, fraction);
 

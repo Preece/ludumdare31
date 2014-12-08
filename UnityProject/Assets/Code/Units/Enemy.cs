@@ -79,9 +79,11 @@ public class Enemy : Unit {
 		}
 	}
 	void Update(){
-		RelentlessHunt (); 
-		Pursuit ();
-		Attack ();
+		if(_play) {
+			RelentlessHunt (); 
+			Pursuit ();
+			Attack ();
+		}
 	}
 	void Start(){
 		_anim.Play ("Start",0, Random.Range (0, .8f)); 

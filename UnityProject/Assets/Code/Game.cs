@@ -8,7 +8,7 @@ public class Game : MonoBehaviour {
 
 	public LayerMask groundOnly;
 
-	bool paused = true;
+	public bool paused = true;
 
 	// Use this for initialization
 	void Start () {

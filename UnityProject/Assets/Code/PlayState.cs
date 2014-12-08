@@ -20,11 +20,16 @@ public class PlayState {
 	}
 
 	public void LeftClick(Vector3 pos) {
+		//if there is a unit under the click, select it
+		//if shift is down, add it to the selection.
+		//otherwise clear it and add just this guy
+
+		//otherwise,begin a marquee selection
 	
 	}
 
 	public void RightClick(Vector3 pos){
-
+		//tell all dudes to go to the point
 	}
 
 	public void LeftRelease(Vector3 pos) {
