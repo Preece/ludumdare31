@@ -10,6 +10,11 @@ public class HudController : MonoBehaviour {
 	public Text remainingWorkersText;
 	public Text theTime; 
 
+	public Text fuelAmount;
+	public Text rawAmount; 
+	public Text partsAmount; 
+	ResourceNode _selectedNode; 
+
 	int _enemiesKiled; 
 
 
@@ -48,9 +53,24 @@ public class HudController : MonoBehaviour {
 	public void Timer(string _currentTime){
 		theTime.text = _currentTime; 
 	}
-
+	public void SelectBuilding(ResourceNode _node ){
+		_selectedNode = _node; 
+	}
+	void DisplayBuildingSpecfics(){
+		if(_selectedNode != null){
+			rawAmount.text = _selectedNode.GetRaw().ToString();
+			fuelAmount.text = _selectedNode.GetFuel().ToString();
+			partsAmount.text = _selectedNode.GetParts ().ToString(); 
+		}
+		else {
+			rawAmount.text = " ";
+			fuelAmount.text = " ";
+			partsAmount.text = " "; 
+		}
+	}
 	void OnGUI(){
 		remainingWorkersText.text = _remainingWorkers.ToString();
 		enemiesKilledText.text = _enemiesKiled.ToString(); 
+		DisplayBuildingSpecfics (); 
 	}
 }
