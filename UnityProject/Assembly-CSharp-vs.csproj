@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Code\Effects\KillYourself.cs" />
      <Compile Include="Assets\Code\Game.cs" />
+     <Compile Include="Assets\Code\MarqueeSelection.cs" />
      <Compile Include="Assets\Code\PauseState.cs" />
      <Compile Include="Assets\Code\PlayState.cs" />
      <Compile Include="Assets\Code\StructureController.cs" />

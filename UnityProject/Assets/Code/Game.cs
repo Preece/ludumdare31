@@ -27,6 +27,12 @@ public class Game : MonoBehaviour {
 		}
 
 		if(Input.GetKeyDown(KeyCode.Space)) {
+			if(!paused) {
+				playState.Pause();
+			} else {
+				pauseState.Play();
+			}
+
 			paused = !paused;
 		}
 
