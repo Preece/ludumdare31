@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class PauseState {
 
+	UnitManager _unitManger; 
+
 	ResourceNode selectedStructure = null;
 	ResourceNode placementStructure = null;
 
@@ -77,7 +79,7 @@ public class PauseState {
 	}
 
 	public void Play() {
-
+		_unitManger = GameObject.Find ("GameController").GetComponent<UnitManager> (); 
 	}
 
 	public void LeftClick(Vector3 pos) {

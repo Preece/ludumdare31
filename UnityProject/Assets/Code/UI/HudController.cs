@@ -8,7 +8,7 @@ public class HudController : MonoBehaviour {
 	public int WorkersLeft {get{ return _remainingWorkers;}set{_remainingWorkers = value;}}
 	public Text enemiesKilledText;
 	public Text remainingWorkersText;
-
+	public Text theTime; 
 
 	int _enemiesKiled; 
 
@@ -37,6 +37,9 @@ public class HudController : MonoBehaviour {
 	}
 	public void Pause(){
 		
+	}
+	public void Timer(string _currentTime){
+		theTime.text = _currentTime; 
 	}
 	void OnGUI(){
 		remainingWorkersText.text = _remainingWorkers.ToString();
