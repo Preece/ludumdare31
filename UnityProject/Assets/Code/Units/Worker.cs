@@ -16,6 +16,7 @@ public class Worker : Unit {
 	public List<Transform> gunPoints = new List<Transform> (); 
 	public Object muzzleFX; 
 	public Object explosionFX;
+	public ParticleSystem _sparks; 
 
 	bool _spawnFireFX = true; 
 	float _animTime; 
@@ -36,6 +37,7 @@ public class Worker : Unit {
 		_repairingStructure = false; 
 		_targetStructure = null; 
 		_anim.SetBool("Building", false); 
+		_sparks.emissionRate =0; 
 		detector.NoLongerLooking (); 
 
 		foreach (SkinnedMeshRenderer _theMesh in theMeshes) {
@@ -52,6 +54,7 @@ public class Worker : Unit {
 			_targetStructure = null; 
 			_anim.SetBool("Building", false); 
 			_anim.SetBool("Attacking",true); 
+			_sparks.emissionRate =0; 
 			detector.NoLongerLooking(); 
 		}
 	}
@@ -145,6 +148,7 @@ public class Worker : Unit {
 				if (!_agent.hasPath || _agent.velocity.sqrMagnitude == 0f)
 				{
 					Debug.Log("Repairing"); 
+					_sparks.emissionRate = 25; 
 					_anim.SetBool("Building", true); 
 					_repairingStructure = true; 
 				}

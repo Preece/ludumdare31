@@ -60,8 +60,8 @@ MonoBehaviour:
   gameController: {fileID: 11400000}
   _workers: []
   enemyPrefab: {fileID: 100032, guid: f288ae9d2d0226049b96d0587001fcb1, type: 2}
-  spawnFrequency: 1
-  spawnAmount: 1
+  spawnFrequency: .200000003
+  spawnAmount: .200000003
   spawnMax: 50
   spawnPoints:
   - {fileID: 0}
@@ -69,6 +69,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  isPaused: 1
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
