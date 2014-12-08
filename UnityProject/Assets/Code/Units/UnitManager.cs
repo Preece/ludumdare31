@@ -74,20 +74,20 @@ public class UnitManager : MonoBehaviour {
 		return  spawnPoints [Random.Range (0, spawnPoints.Count - 1)].position; 
 	}
 	int SpawnRate(){
-		return (int) Mathf.Clamp((Mathf.Sin(_timer.runningTime*spawnFrequency)*_timer.runningTime/spawnAmount),0,spawnMax);
+		return (int) Mathf.Clamp((Mathf.Sin(_timer.runningTime*spawnFrequency)*_timer.runningTime*spawnAmount),0,spawnMax);
 	}
-	public bool GetGameState(){
-		return gameController.paused; 
-	}
+	public bool isPaused = true; 
 	bool spawnSpurt = false; 
 	void SpawnEnemies(){
-		Debug.Log (((int)(Mathf.Floor (_timer.runningTime))) % 4 ); 
-		if (  ((int)(Mathf.Floor(_timer.runningTime))) % 4 == 0) {
-			for(int i = 0; i < SpawnRate(); i++){
-				GameObject _theEnemy = Instantiate (enemyPrefab) as GameObject;
-				_theEnemy.transform.position = PointToSpawn(); 
+		if (  ((int)(Mathf.Floor(_timer.runningTime))) % 5 == 0) {
+			if(spawnSpurt){
+				Debug.Log(SpawnRate()); 
+				for(int i = 0; i < SpawnRate(); i++){
+					GameObject _theEnemy = Instantiate (enemyPrefab) as GameObject;
+					_theEnemy.transform.position = PointToSpawn(); 
+				}
+				spawnSpurt = false; 
 			}
-			spawnSpurt = false; 
 		}
 		else{
 			spawnSpurt = true; 

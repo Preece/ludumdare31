@@ -161,7 +161,6 @@ public class Worker : Unit {
 				_theFX.transform.parent = gunPoints[i].transform; 
 				_theFX.transform.position = gunPoints[i].transform.position;
 				_theFX.transform.rotation = gunPoints[i].transform.rotation;
-				Debug.Log(i);
 			}
 			_spawnFireFX = false;
 			DoDamage (); 
@@ -204,6 +203,15 @@ public class Worker : Unit {
 			AnimControl (); 
 			//FollowTest (); 
 			FireWeaponFX (); 
+		}
+	}
+	void CheckState(){
+		if (_manager.isPaused ) {
+			Pause();		
+		}
+		else{
+			Play(); 
+			Debug.Log ("Starting in play mode"); 
 		}
 	}
 

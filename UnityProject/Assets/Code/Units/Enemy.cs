@@ -8,6 +8,7 @@ public class Enemy : Unit {
 	bool _startingAttack = false; 
 	float _animTimer = 0; 
 	public Object bloodSplatter; 
+	bool _knowsInitialState = false; 
 
 	public void GotShot(Worker _shooter, int _damageTaken){
 
@@ -78,12 +79,19 @@ public class Enemy : Unit {
 			}
 		}
 	}
+	void GetInitialState(){
+		if (!_knowsInitialState) {
+			Play (); 
+			_knowsInitialState =true; 
+		}
+	}
 	void Update(){
 		if(_play) {
 			RelentlessHunt (); 
 			Pursuit ();
 			Attack ();
 		}
+		GetInitialState (); 
 	}
 	void Start(){
 		_anim.Play ("Start",0, Random.Range (0, .8f)); 
