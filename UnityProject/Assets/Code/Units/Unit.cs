@@ -7,7 +7,7 @@ public class Unit : MonoBehaviour {
 	protected Transform _moveTarget; 
 	protected UnitManager _manager;
 	protected Animator _anim; 
-	protected bool _play; 
+	public bool _play = false; 
 
 	[SerializeField]
 	protected float _health = 100;
@@ -20,7 +20,8 @@ public class Unit : MonoBehaviour {
 	protected void AnimControl(){
 		_anim.SetFloat ("Speed", _agent.velocity.magnitude); 
 	}
-	public void Play(){
+	public void Play(){ 
+		Debug.Log ("Play"); 
 		_agent.Resume ();
 		_play = true; 
 	}
@@ -43,6 +44,14 @@ public class Unit : MonoBehaviour {
 		_anim = GetComponentInChildren<Animator> (); 
 
 		AddToList (); 
+	}
+	void Start(){
+		if (_manager.GetGameState ()) {
+			Pause();		
+		}
+		else{
+			Play(); 
+		}
 	}
 	void Update(){
 		
