@@ -39,7 +39,7 @@ public class Enemy : Unit {
 			_agent.speed = 10; 
 		}
 		if(_anim.GetCurrentAnimatorStateInfo(0).IsName("Attack") && _startingAttack == true && _presentThreat != null
-		   		&& !_anim.IsInTransition(0)){
+		   		&& !_anim.IsInTransition(0)){ //at the begginging of their attack animation, they deal damage
 			_presentThreat.GotHit (this,damage); 
 			_startingAttack = false;
 		}
@@ -49,20 +49,24 @@ public class Enemy : Unit {
 		}
 		_animTimer = _anim.GetCurrentAnimatorStateInfo (0).normalizedTime - Mathf.Floor (_anim.GetCurrentAnimatorStateInfo (0).normalizedTime);
 	}
+	protected override void Died (){
+		_manager.Died (this);
+		Destroy (_moveTarget.gameObject); 
+		gameObject.layer = 0; 
+		_anim.Play ("Death"); 
+		Destroy (GetComponent<SphereCollider> ());
+		Destroy (_agent);
+		Destroy (GetComponent<Rigidbody> ());
+		Destroy (this); 
+	}
+	protected override void AddToList (){
+		_manager.AddToLists (this); 
+	}
 	void Pursuit(){
 		if (_presentThreat != null) {
 			GoHere (_presentThreat.transform.position); 
 		}
 	}
-	protected override void Died (){
-		_manager.Died (this);
-		Destroy (_moveTarget.gameObject); 
-		Destroy (gameObject); 
-	}
-	protected override void AddToList (){
-		_manager.AddToLists (this); 
-	}
-
 	void RelentlessHunt(){
 		if(_presentThreat == null){
 			Collider[] _workers = Physics.OverlapSphere (transform.position, 80f);

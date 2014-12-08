@@ -58,6 +58,7 @@
      <Compile Include="Assets\Code\Structures\RawMaterials.cs" />
      <Compile Include="Assets\Code\Structures\Refinery.cs" />
      <Compile Include="Assets\Code\Structures\ResourceNode.cs" />
+     <Compile Include="Assets\Code\UI\HudController.cs" />
      <Compile Include="Assets\Code\UI\Timer.cs" />
      <Compile Include="Assets\Code\Units\Enemy.cs" />
      <Compile Include="Assets\Code\Units\Unit.cs" />
@@ -65,6 +66,10 @@
      <Compile Include="Assets\Code\Units\Worker.cs" />
      <Compile Include="Assets\Code\Units\WorkerDetector.cs" />
      <Compile Include="Assets\Scratch_Wolff\TestScript.cs" />
+     <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Basic.shader" />
+     <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-BasicOutline.shader" />
+     <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-LightedOutline.shader" />
+     <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Lighted.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
  </Reference>

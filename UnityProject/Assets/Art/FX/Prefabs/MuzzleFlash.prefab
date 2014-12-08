@@ -41,7 +41,7 @@ Light:
   serializedVersion: 3
   m_Type: 2
   m_Color: {r: 1, g: .800000012, b: .147058845, a: 1}
-  m_Intensity: 2
+  m_Intensity: 3
   m_Range: 3
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -255,7 +255,7 @@ ParticleSystem:
         rgba: 4278252744
       minMaxState: 0
     startSize:
-      scalar: .200000003
+      scalar: .25
       maxCurve:
         serializedVersion: 2
         m_Curve:

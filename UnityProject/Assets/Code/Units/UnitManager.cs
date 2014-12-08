@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic; 
 
 public class UnitManager : MonoBehaviour {
-	
+
+	public HudController hud; 
 	public List<Worker> _workers = new List<Worker>(); 
 	List<Enemy> _enemies = new List<Enemy>(); 
 	List<Worker> _selectedUnits = new List<Worker> (); 	
@@ -26,6 +27,7 @@ public class UnitManager : MonoBehaviour {
 	}
 	public void AddToLists(Worker _unit){
 		_workers.Add (_unit); 
+		hud.WorkersLeft = _workers.Count; 
 	}
 	public void AddToLists(Enemy _unit){
 		_enemies.Add (_unit); 
@@ -38,9 +40,11 @@ public class UnitManager : MonoBehaviour {
 	}
 	public void Died(Worker _unit){
 		_workers.Remove (_unit);
+		hud.WorkersLeft = _workers.Count; 
 	}
 	public void Died(Enemy _unit){
 		_enemies.Remove (_unit);
+		hud.KilledAnEnemy (); 
 	}
 	public void DeselectWorkers(){
 		_selectedUnits.Clear (); 
