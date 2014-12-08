@@ -101,7 +101,7 @@ State:
   m_Motions:
   - {fileID: 7400000, guid: 858df34e9ed6e8740ace435deceb76f3, type: 3}
   m_ParentStateMachine: {fileID: 110700000}
-  m_Position: {x: -144, y: 132, z: 0}
+  m_Position: {x: -12, y: 144, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
@@ -116,7 +116,7 @@ State:
   m_Motions:
   - {fileID: 7400000, guid: ebad4f315b0f4324c997224441e43f55, type: 3}
   m_ParentStateMachine: {fileID: 110700000}
-  m_Position: {x: 144, y: 120, z: 0}
+  m_Position: {x: 180, y: 120, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
@@ -131,7 +131,22 @@ State:
   m_Motions:
   - {fileID: 7400000, guid: 858df34e9ed6e8740ace435deceb76f3, type: 3}
   m_ParentStateMachine: {fileID: 110700000}
-  m_Position: {x: -156, y: 48, z: 0}
+  m_Position: {x: -96, y: 48, z: 0}
+  m_IKOnFeet: 0
+  m_Mirror: 0
+  m_Tag: 
+--- !u!1102 &110287515
+State:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Death
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Motions:
+  - {fileID: 7400000, guid: 557bb3348a6940549b6cbdd8ff3496dc, type: 3}
+  m_ParentStateMachine: {fileID: 110700000}
+  m_Position: {x: -288, y: 108, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
@@ -147,6 +162,7 @@ StateMachine:
   - {fileID: 110200000}
   - {fileID: 110217561}
   - {fileID: 110251065}
+  - {fileID: 110287515}
   m_ChildStateMachine: []
   m_ChildStateMachinePosition: []
   m_OrderedTransitions:
@@ -155,13 +171,13 @@ StateMachine:
       second:
       - {fileID: 110117771}
     data:
-      first: {fileID: 110217561}
-      second:
-      - {fileID: 110193557}
-    data:
       first: {fileID: 110200000}
       second:
       - {fileID: 110100000}
+    data:
+      first: {fileID: 110217561}
+      second:
+      - {fileID: 110193557}
   m_MotionSetCount: 1
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
