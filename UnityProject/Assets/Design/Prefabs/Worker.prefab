@@ -770,7 +770,7 @@ GameObject:
   - 135: {fileID: 13500002}
   m_Layer: 10
   m_Name: Worker
-  m_TagString: Untagged
+  m_TagString: SelectableUnit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1545,6 +1545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97fbdb7afed1be54aa662e26077a2c26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _play: 0
   _health: 100
   weaponDamage: 30
   repairDistance: 5

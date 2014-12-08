@@ -14,7 +14,7 @@ public class UnitManager : MonoBehaviour {
 	public float spawnMax; 
 	public List<Transform> spawnPoints = new List<Transform> (); 
 	List<Enemy> _enemies = new List<Enemy>(); 
-	List<Worker> _selectedUnits = new List<Worker> (); 	
+	public List<Worker> _selectedUnits = new List<Worker> (); 	
 
 
 	public void Pause(){
@@ -59,6 +59,10 @@ public class UnitManager : MonoBehaviour {
 	public void DeselectWorkers(){
 		_selectedUnits.Clear (); 
 	}
+
+	public void SelectWorker(Worker newW) {
+		_selectedUnits.Add(newW);
+	}
 	public void SelectWorkers(List<Worker> _selection){
 		foreach (Worker _selWorker in _selection) {
 			_selectedUnits.Add(_selWorker); 		
@@ -81,7 +85,6 @@ public class UnitManager : MonoBehaviour {
 	}
 	bool spawnSpurt = false; 
 	void SpawnEnemies(){
-		Debug.Log (((int)(Mathf.Floor (_timer.runningTime))) % 4 ); 
 		if (  ((int)(Mathf.Floor(_timer.runningTime))) % 4 == 0) {
 			for(int i = 0; i < SpawnRate(); i++){
 				GameObject _theEnemy = Instantiate (enemyPrefab) as GameObject;

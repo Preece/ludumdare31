@@ -49,10 +49,14 @@ public class Game : MonoBehaviour {
 		}
 
 		if(Input.GetMouseButtonDown (1)) {
+			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+			RaycastHit hit; 
+			Physics.Raycast (ray, out hit, 100, groundOnly);
+
 			if(paused) {
 				pauseState.RightClick(Camera.main.ScreenToWorldPoint(Input.mousePosition));
 			} else {
-				
+				GameObject.Find("GameController").GetComponent<UnitManager>().MoveUnitsTo(hit.point);
 			}
 		}
 

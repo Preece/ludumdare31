@@ -12,8 +12,13 @@ public class MarqueeSelection : MonoBehaviour {
      public List<GameObject> SelectableUnits;
      private Rect backupRect;
 
-     void Start() {
+     public GameObject gameController;
+     private UnitManager UM;
 
+     public LayerMask workers;
+
+     void Start() {
+     	UM = gameController.GetComponent<UnitManager>();
      }
 
      private void OnGUI()
@@ -25,7 +30,7 @@ public class MarqueeSelection : MonoBehaviour {
 
      void Update()
      {
-          /*if (Input.GetMouseButtonDown(0))
+          if (Input.GetMouseButtonDown(0))
           {
                //Poppulate the selectableUnits array with all the selectable units that exist
                SelectableUnits = new List<GameObject>(GameObject.FindGameObjectsWithTag("SelectableUnit"));
@@ -36,12 +41,15 @@ public class MarqueeSelection : MonoBehaviour {
                //Check if the player just wants to select a single unit opposed to drawing a marquee and selecting a range of units
                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                RaycastHit hit;
-               if (Physics.Raycast(ray, out hit))
+               if (Physics.Raycast(ray, out hit, 100, workers))
                {
                     SelectableUnits.Remove(hit.transform.gameObject);
-                    hit.transform.gameObject.SendMessage("OnSelected",SendMessageOptions.DontRequireReceiver);
+                    UM.DeselectWorkers();
+                    UM.SelectWorker(hit.transform.gameObject.GetComponent<Worker>());
+                    //hit.transform.gameObject.SendMessage("OnSelected",SendMessageOptions.DontRequireReceiver);
                }
           }
+
           if (Input.GetMouseButtonUp(0))
           {
                //Reset the marquee so it no longer appears on the screen.
@@ -52,6 +60,7 @@ public class MarqueeSelection : MonoBehaviour {
                marqueeSize = Vector2.zero;
  
           }
+
           if (Input.GetMouseButton(0))
           {
                float _invertedY = Screen.height - Input.mousePosition.y;
@@ -69,21 +78,20 @@ public class MarqueeSelection : MonoBehaviour {
                {
                     backupRect = new Rect(marqueeRect.x - Mathf.Abs(marqueeRect.width), marqueeRect.y - Mathf.Abs(marqueeRect.height), Mathf.Abs(marqueeRect.width), Mathf.Abs(marqueeRect.height));
                }
+
+               UM.DeselectWorkers();
+
                foreach (GameObject unit in SelectableUnits)
                {
                     //Convert the world position of the unit to a screen position and then to a GUI point
                     Vector3 _screenPos = Camera.main.WorldToScreenPoint(unit.transform.position);
                     Vector2 _screenPoint = new Vector2(_screenPos.x, Screen.height - _screenPos.y);
-                    //Ensure that any units not within the marquee are currently unselected
-                    if (!marqueeRect.Contains(_screenPoint) || !backupRect.Contains(_screenPoint))
-                    {
-                         unit.SendMessage("OnUnselected", SendMessageOptions.DontRequireReceiver);
-                    }
+
                     if (marqueeRect.Contains(_screenPoint) || backupRect.Contains(_screenPoint))
                     {
-                         unit.SendMessage("OnSelected", SendMessageOptions.DontRequireReceiver);
+                         UM.SelectWorker(unit.GetComponent<Worker>());
                     }
                }
-          }*/
+          }
      }
 }
